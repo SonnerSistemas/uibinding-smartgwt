@@ -1,5 +1,7 @@
 #Example using UITab and UITabSet
 
+_Usual warning_: *Do not* lay this SmartGWT construct into a plain GWT widget. If your smartGWT construct does not display, it means you have to hunt for a plain GWT widget you do not realise is hidden somewhere between the root panel and your SmartGWT construct.
+
 This example uses a LazyCanvas, so that you can build a whole website with lots of tabsets wrapped with a LazyCanvas, but each tabset is instantiated only when you use them.
 
 *HomeTabset1.ui.xml*:
