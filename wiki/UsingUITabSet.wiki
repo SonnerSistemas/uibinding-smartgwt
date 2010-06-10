@@ -1,0 +1,59 @@
+#Example using UITab and UITabSet
+
+This example uses a LazyCanvas, so that you can build a whole website with lots of tabsets wrapped with a LazyCanvas, but each tabset is instantiated only when you use them.
+
+*HomeTabset1.ui.xml*:
+{{{
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:zs="urn:import:org.synthful.smartgwt.client.widgets"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:with field='main' type='hello.Main'/>
+  <zs:UITabSet ui:field="tabset" width="100%" height='{main.getTabHeight}'>
+    <zs:UITab ui:field="taba" title="קרא">
+      <zs:UILabel>שגדליק</zs:UILabel>
+    </zs:UITab>
+    <zs:UITab title="השמים">
+      <zs:UILabel>לא אירא רע</zs:UILabel>
+    </zs:UITab>
+    <zs:UITab title="שלח">
+      <zs:UILabel>להיתראות</zs:UILabel>
+    </zs:UITab>
+  </zs:UITabSet>
+</ui:UiBinder>
+}}}
+
+
+*HomeTabset1.java* code behind HomeTabset1.ui.xml:
+{{{
+import org.synthful.smartgwt.client.LazyCanvas;
+import com.smartgwt.client.widgets.tab.TabSet;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Widget;
+
+public class HomeTabset1
+extends LazyCanvas<TabSet>{
+
+  interface HomeTabsetUiBinder
+  extends UiBinder<Widget, HomeTabset1> {
+  }
+  
+  private static HomeTabsetUiBinder uiBinder =
+    GWT.create(HomeTabsetUiBinder.class);
+
+  @UiField
+  TabSet tabset;
+
+  public HomeTabset1(){
+    this.setTitle("Home1");
+  }
+
+  @Override
+  protected TabSet createCanvas() {
+    uiBinder.createAndBindUi(this);
+    return this.tabset;
+  }
+}
+}}}
