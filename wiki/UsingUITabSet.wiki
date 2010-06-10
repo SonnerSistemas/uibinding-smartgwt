@@ -59,3 +59,91 @@ extends LazyCanvas<TabSet>{
   }
 }
 }}}
+
+
+*Main.ui.xml*:
+{{{
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder
+  xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:zs="urn:import:org.synthful.smartgwt.client.widgets"
+  xmlns:my="urn:import:hello.main.client"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui"
+  >
+  <ui:with field='main' type='hello.Main'/>
+  <zs:UIVLayout ui:field="canvas" height="{main.getTabHeight}" width="100%">
+    <g:Label ui:field="caption" height="12px">Home</g:Label>
+    <zs:UICanvas ui:field="contentPanel" width="100%">
+      <my:HomeTabset ui:field="home" width="100%"/>
+      <my:HomeTabset1 ui:field="home1" width="100%"/>
+    </zs:UICanvas>
+    <g:Label height="10px">Quick brown fox</g:Label>
+  </zs:UIVLayout>
+</ui:UiBinder>
+}}}
+
+
+*Main.java* code behind Main.ui.xml and entrypoint:
+{{{
+import ...
+
+public class Main
+  implements EntryPoint
+{
+  interface MainUiBinder
+    extends UiBinder<Widget, Main>{}
+
+  static private MainUiBinder uiBinder =
+    GWT.create(MainUiBinder.class);
+
+  @UiField public UICanvas contentPanel;
+  @UiField UIVLayout canvas;
+
+  @UiField(provided=true)
+  Main main;
+  
+  @UiField public Label caption;
+  @UiField public HomeTabset1 home1;
+  @UiField public Tabset2 tabset2;  
+  Canvas[] tabsetContainer;
+
+  @Override
+  public void onModuleLoad() {
+    this.main = this;
+    uiBinder.createAndBindUi(this);
+    RootPanel.get().add(canvas);
+    tabsetContainer =
+      new Canvas[]{
+        home1, tabset2 /*, whatever you put in Main.ui.xml */};
+    this.selectTabset(home);
+  }
+  
+  public String getMenuBarHeight(){
+    return ""+Main.menuBarHeight;
+  }
+  
+  public int getTabBarHeight(){
+    return tabBarHeight;
+  }
+  
+  public String getTabHeight(){
+    return
+     ""+(Window.getClientHeight()
+     - menuBarHeight - tabBarHeight - tabHeightAllowance);
+  }
+  
+  public void selectTabset(Canvas c){
+    for (Canvas cx : tabsetContainer){
+      if (cx!=c)
+        cx.hide();
+    }
+    this.caption.setText(c.getTitle());
+    c.show();
+  }
+
+  static private int
+    menuBarHeight = 22,
+    tabBarHeight = 20,
+    tabHeightAllowance = 25;
+}
+}}}
