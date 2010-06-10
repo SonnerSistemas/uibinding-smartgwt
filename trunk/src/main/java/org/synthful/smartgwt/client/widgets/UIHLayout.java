@@ -3,11 +3,9 @@ package org.synthful.smartgwt.client.widgets;
 import java.util.Iterator;
 
 import org.synthful.smartgwt.client.HasWidgetsUtil;
-import org.synthful.smartgwt.client.UIMasquerade;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
-import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.HLayout;
 
 public class UIHLayout
@@ -15,13 +13,7 @@ public class UIHLayout
 	implements HasWidgets
 {
 	public void add(Widget w){
-		if (w instanceof UIMasquerade<?>){
-			Object uio = ((UIMasquerade<?>)w).getSmartObject();
-			if (uio instanceof Canvas)
-				this.addMember((Canvas)uio);
-		}
-		else
-			this.addMember(w);
+		HasWidgetsUtil.add(this, w);
 	}
 
 	@Override

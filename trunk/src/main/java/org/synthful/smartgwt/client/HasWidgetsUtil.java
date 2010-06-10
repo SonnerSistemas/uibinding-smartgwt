@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.widgets.Canvas;
+import com.smartgwt.client.widgets.layout.Layout;
 
 public class HasWidgetsUtil
 {
@@ -28,5 +29,15 @@ public class HasWidgetsUtil
 
 		w.removeFromParent();
 		return true;
+	}
+	static public void add(Layout parent,Widget w){
+		if (w instanceof UIMasquerade<?>){
+			Object uio = ((UIMasquerade<?>)w).getSmartObject();
+			if (uio instanceof Canvas)
+				parent.addMember((Canvas)uio);
+		}
+		else{
+			parent.addMember(w);	
+		}
 	}
 }

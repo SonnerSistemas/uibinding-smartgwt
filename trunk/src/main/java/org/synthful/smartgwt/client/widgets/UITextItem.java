@@ -51,7 +51,7 @@ import com.smartgwt.client.widgets.form.fields.events.TitleHoverHandler;
 import com.smartgwt.client.widgets.form.validator.Validator;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
-public class UITextItem extends UIFormItem<TextItem>{
+public class UITextItem extends UIFormItem<TextItem> {
 
 	public UITextItem() {
 		item = new TextItem();
