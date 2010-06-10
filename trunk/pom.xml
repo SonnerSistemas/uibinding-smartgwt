@@ -9,24 +9,6 @@
 	<description>This project adapts Smart GWT visual classes to enable them to be used as UiBinder nodes</description>
 
 	<repositories>
-		<!--
-
-		<repository>
-			<id>jboss</id>
-			<name>Jboss repo</name>
-			<url>http://repository.jboss.org/maven2</url>
-		</repository>
-		<repository>
-			<id>neodatis.googlecode.com</id>
-			<name>neodatis.googlecode.com</name>
-			<url>http://warp-persist-neodatis.googlecode.com/svn/trunk/repo</url>
-		</repository>
-		<repository>
-			<id>gwt-crypto repo</id>
-			<url>http://gwt-crypto.googlecode.com/svn/trunk/repo/</url>
-		</repository>
-
-		-->
 		<repository>
 			<id>smart-client</id>
 			<name>Smart Client Repository</name>
@@ -40,7 +22,6 @@
 	</properties>
 
 	<dependencies>
-	
  		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
@@ -53,7 +34,6 @@
 			<version>${smartGwtVersion}</version>
 			<scope>provided</scope>
 		</dependency>
-		
 	</dependencies>
 
 	<build>
