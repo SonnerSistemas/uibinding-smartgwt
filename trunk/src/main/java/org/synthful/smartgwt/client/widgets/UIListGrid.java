@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 
-public class UIListGrid extends ListGrid implements HasWidgets{
+public class UIListGrid extends ListGrid implements HasWidgets {
 
 	@Override
 	public void add(Widget widget) {

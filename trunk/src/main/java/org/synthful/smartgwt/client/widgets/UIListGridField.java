@@ -50,7 +50,7 @@ import com.smartgwt.client.widgets.grid.events.EditorEnterHandler;
 import com.smartgwt.client.widgets.grid.events.EditorExitHandler;
 import com.smartgwt.client.widgets.grid.events.RecordClickHandler;
 
-public class UIListGridField extends Widget implements UIMasquerade<ListGridField>, HasText{
+public class UIListGridField extends Widget implements UIMasquerade<ListGridField>, HasText {
 	ListGridField field;
 	
 	public UIListGridField() {
