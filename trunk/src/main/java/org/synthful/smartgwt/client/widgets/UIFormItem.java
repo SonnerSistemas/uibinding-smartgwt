@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.synthful.smartgwt.client.UIMasquerade;
+
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -52,12 +54,17 @@ import com.smartgwt.client.widgets.form.validator.Validator;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 abstract public class UIFormItem<F extends FormItem>
-extends Widget implements HasText{
+	extends Widget implements HasText, UIMasquerade<F>{
 
 	protected F item;
 	
 	public F getFormItem() {
 		return this.item;
+	}
+	
+	@Override
+	public F getSmartObject() {
+		return item;
 	}
 	
 	public void setName(String name){
