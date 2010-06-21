@@ -60,8 +60,6 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 public class UISelectItem extends UIFormItem<SelectItem>{
 
-	SelectItem item;
-	
 	public UISelectItem() {
 		item = new SelectItem();
 	}
