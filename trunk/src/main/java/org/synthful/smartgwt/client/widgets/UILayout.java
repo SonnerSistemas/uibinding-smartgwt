@@ -2,6 +2,7 @@ package org.synthful.smartgwt.client.widgets;
 
 import java.util.Iterator;
 
+import org.synthful.smartgwt.client.HasUILayoutAlign;
 import org.synthful.smartgwt.client.HasWidgetsUtil;
 import org.synthful.smartgwt.client.UIMasquerade;
 
@@ -14,7 +15,7 @@ import com.smartgwt.client.widgets.layout.Layout;
 
 public class UILayout
 	extends Layout
-	implements HasWidgets
+	implements HasWidgets, HasUILayoutAlign
 {
 	public void add(Widget w){
 		if (w instanceof Canvas){
@@ -47,10 +48,22 @@ public class UILayout
 		return HasWidgetsUtil.remove(this, w);
 	}
 	
+	@Override
 	public void setDefaultLayoutHAlign(Alignment alignment){
 		super.setDefaultLayoutAlign(alignment);
 	}
+	@Override
 	public void setDefaultLayoutVAlign(VerticalAlignment alignment){
 		super.setDefaultLayoutAlign(alignment);
+	}
+
+	@Override
+	public void setLayoutHAlign(Alignment alignment) {
+		super.setLayoutAlign(alignment);
+	}
+
+	@Override
+	public void setLayoutVAlign(VerticalAlignment alignment) {
+		super.setLayoutAlign(alignment);
 	}
 }

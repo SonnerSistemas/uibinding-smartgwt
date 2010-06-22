@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.synthful.smartgwt.client.HasUICanvasAlign;
+
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
 
-public class UIDynamicForm extends DynamicForm implements HasWidgets {
+public class UIDynamicForm
+extends DynamicForm
+implements HasWidgets, HasUICanvasAlign {
 
 	@Override
 	public void add(Widget widget) {
@@ -61,5 +67,14 @@ public class UIDynamicForm extends DynamicForm implements HasWidgets {
 		}
 		return false;
 	}
+	
+	@Override
+	public void setLayoutHAlign(Alignment alignment) {
+		super.setLayoutAlign(alignment);
+	}
 
+	@Override
+	public void setLayoutVAlign(VerticalAlignment alignment) {
+		super.setLayoutAlign(alignment);
+	}
 }
