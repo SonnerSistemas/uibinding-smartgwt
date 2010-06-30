@@ -12,6 +12,7 @@ import com.smartgwt.client.widgets.HTMLPane;
  * 
  * to render a html code like this: 
  *		<object width="400px" height="300px" type="application/pdf" data="http://www.foobar.com/myServlet"  />
+ *
  */
 public class UIObjectElement extends HTMLPane {
 	
