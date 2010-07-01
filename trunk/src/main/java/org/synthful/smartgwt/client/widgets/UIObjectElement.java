@@ -11,7 +11,7 @@ import com.smartgwt.client.widgets.HTMLPane;
  *		<sc:UIObjectElement width="800" height="300" type="application/pdf"  data="http://www.foobar.com/myServlet" />
  * 
  * to render a html code like this: 
- *		<object width="400px" height="300px" type="application/pdf" data="http://www.foobar.com/myServlet"  />
+ *		<object width="800px" height="300px" type="application/pdf" data="http://www.foobar.com/myServlet"  />
  *
  */
 public class UIObjectElement extends HTMLPane {
