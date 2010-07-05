@@ -30,14 +30,24 @@ public class UITabSet extends TabSet implements HasWidgets {
 	}
 
 	/**
-	 * Olhar os valores no enum Side
 	 * @param value
 	 * @throws IllegalStateException
+	 * @see Side
 	 */
 	public void setTabBarPosition(String value) throws IllegalStateException {
 		Side tabBarPosition = Side.valueOf(value.toUpperCase());
 		if(tabBarPosition != null) {
 			super.setTabBarPosition(tabBarPosition);
+		}
+	}
+
+	/**
+	 * @see Side 
+	 */
+	public void setTabBarAlign(String value) throws IllegalStateException {
+		Side tabBarAlign = Side.valueOf(value.toUpperCase());
+		if(tabBarAlign != null) {
+			super.setTabBarAlign(tabBarAlign);
 		}
 	}
 }
