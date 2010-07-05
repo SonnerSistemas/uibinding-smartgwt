@@ -6,6 +6,7 @@ import org.synthful.smartgwt.client.HasWidgetsUtil;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.smartgwt.client.types.Side;
 import com.smartgwt.client.widgets.tab.TabSet;
 
 public class UITabSet extends TabSet implements HasWidgets {
@@ -28,4 +29,15 @@ public class UITabSet extends TabSet implements HasWidgets {
 		return HasWidgetsUtil.remove(this, w);
 	}
 
+	/**
+	 * Olhar os valores no enum Side
+	 * @param value
+	 * @throws IllegalStateException
+	 */
+	public void setTabBarPosition(String value) throws IllegalStateException {
+		Side tabBarPosition = Side.valueOf(value.toUpperCase());
+		if(tabBarPosition != null) {
+			super.setTabBarPosition(tabBarPosition);
+		}
+	}
 }
