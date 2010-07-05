@@ -540,9 +540,16 @@ public class UIListGridField extends Widget implements UIMasquerade<ListGridFiel
 	public int hashCode() {
 		return field.hashCode();
 	}
-
-	public void setAlign(Alignment align) {
-		field.setAlign(align);
+	
+	/**
+	 * Usar os valores do enum: Alignment
+	 * @param value
+	 */
+	public void setAlign(String value) {
+		Alignment align = Alignment.valueOf(value.toUpperCase());
+		if(align != null) {
+			field.setAlign(align);
+		}
 	}
 
 	public void setAttribute(String property, BaseClass value) {
