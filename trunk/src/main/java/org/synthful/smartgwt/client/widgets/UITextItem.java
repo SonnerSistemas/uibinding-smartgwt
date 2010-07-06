@@ -738,8 +738,15 @@ public class UITextItem extends UIFormItem<TextItem> {
 		item.setAccessKey(accessKey);
 	}
 
-	public void setAlign(Alignment align) {
-		item.setAlign(align);
+	/**
+	 * Usar os valores do enum: Alignment
+	 * @param value
+	 */
+	public void setAlign(String value) {
+		Alignment align = Alignment.valueOf(value.toUpperCase());
+		if(align != null) {
+			item.setAlign(align);
+		}
 	}
 
 	public void setAttribute(String property, BaseClass value) {
