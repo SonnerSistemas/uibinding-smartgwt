@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.synthful.smartgwt.client.HasUICanvasAlign;
+import org.synthful.smartgwt.client.util.StringTokenizer;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -77,4 +78,12 @@ implements HasWidgets, HasUICanvasAlign {
 	public void setLayoutVAlign(VerticalAlignment alignment) {
 		super.setLayoutAlign(alignment);
 	}
+	
+	public void setColWidths(String values) {
+		if(values != null && !"".equals(values.trim())) {
+			StringTokenizer st = new StringTokenizer(values, " ");
+			super.setColWidths((Object[])st.getTokens());
+		}
+	}
+	
 }
