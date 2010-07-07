@@ -3,6 +3,7 @@ package org.synthful.smartgwt.client.widgets;
 import com.smartgwt.client.widgets.form.fields.CheckboxItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
 
+@Deprecated
 public interface FormItems {
 	
 	class UITextItem
