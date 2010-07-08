@@ -75,6 +75,12 @@ abstract public class UIFormItem<F extends FormItem>
 		this.item.setTitle(title);
 	}
 	
+	public void setIcon(String path) {
+		FormItemIcon icon = new FormItemIcon();
+		icon.setSrc(path);
+		this.item.setIcons(icon);
+	}
+	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return item.addBlurHandler(handler);
 	}
