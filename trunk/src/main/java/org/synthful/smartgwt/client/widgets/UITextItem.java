@@ -849,10 +849,6 @@ public class UITextItem extends UIFormItem<TextItem> {
 		item.setCharacterCasing(characterCasing);
 	}
 
-	public void setColSpan(int colSpan) {
-		item.setColSpan(colSpan);
-	}
-
 	public void setColSpan(String colSpan) {
 		item.setColSpan(colSpan);
 	}
