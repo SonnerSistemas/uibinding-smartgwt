@@ -798,7 +798,7 @@ abstract public class UIFormItem<F extends FormItem>
 		item.setCellStyle(cellStyle);
 	}
 
-	public void setColSpan(int colSpan) {
+	public void setColSpan(String colSpan) {
 		item.setColSpan(colSpan);
 	}
 
@@ -1339,6 +1339,5 @@ abstract public class UIFormItem<F extends FormItem>
 	public String getText() {
 		return item.getName();
 	}
-
 	
 }
