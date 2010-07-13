@@ -11,4 +11,7 @@ public class UIComboBoxItem extends UIFormItem<ComboBoxItem>{
 	public void setPickListProperties(ListGrid properties){
 		item.setPickListProperties(properties);
 	}
+	public void setShowAllOptions(Boolean allOptions){
+		item.setShowAllOptions(allOptions);
+	}
 }
