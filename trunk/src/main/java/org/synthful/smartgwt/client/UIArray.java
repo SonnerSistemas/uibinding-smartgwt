@@ -1,4 +1,4 @@
-package org.synthful.smartgwt.client.widgets;
+package org.synthful.smartgwt.client;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,24 +6,28 @@ import java.util.Iterator;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-abstract public class WidgetArray<W extends Widget>
-	extends Widget
-	implements HasWidgets
+abstract public class UIArray<W>
+extends Widget
+implements HasWidgets
 {
 
 	@Override
 	public void clear() {
-		this.widgets.clear();
+		this.items.clear();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Iterator<Widget> iterator() {
-		return (Iterator<Widget>) this.widgets.iterator();
+		return (Iterator<Widget>) this.items.iterator();
 	}
 
-	@Override
-	public boolean remove(Widget w) {
-		return this.widgets.remove(w);
+	public boolean add(W w) {
+		return this.items.add(w);
+	}
+
+	public boolean remove(W w) {
+		return this.items.remove(w);
 	}
 	
 	/* Commented out due to
@@ -40,6 +44,6 @@ abstract public class WidgetArray<W extends Widget>
 		return a;
 	}
 	*/
-	protected ArrayList<W> widgets = new ArrayList<W>();
+	protected ArrayList<W> items = new ArrayList<W>();
 
 }

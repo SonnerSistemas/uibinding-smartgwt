@@ -14,6 +14,7 @@ import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.TextItem;
+import com.smartgwt.client.widgets.grid.ListGridField;
 
 public class UIDynamicForm
 extends DynamicForm
@@ -31,6 +32,10 @@ implements HasWidgets, HasUICanvasAlign {
 				newFields[i] = fields[i];
 			}
 			newFields[fields.length] = ((UIFormItem)widget).getFormItem();
+			setFields(newFields);
+		}
+		else if (widget instanceof UIFormItemArray){
+			FormItem[] newFields = ((UIFormItemArray)widget).toArray();
 			setFields(newFields);
 		}
 	}

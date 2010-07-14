@@ -4,12 +4,26 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.synthful.smartgwt.client.ListGridInit;
+
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.widgets.grid.ListGridField;
 import com.smartgwt.client.widgets.tree.TreeGrid;
 
 public class UITreeGrid extends TreeGrid implements HasWidgets {
+	
+	public UITreeGrid() {
+		super();
+	}
+
+	@UiConstructor
+	public UITreeGrid(ListGridInit init) {
+		super();
+		init.init(this);
+	}
 
 	@Override
 	public void add(Widget widget) {
@@ -23,6 +37,14 @@ public class UITreeGrid extends TreeGrid implements HasWidgets {
 			}
 			newFields[fields.length] = ((UIListGridField)widget).getSmartObject();
 			setFields(newFields);
+		}
+		else if (widget instanceof UIListGridFieldArray){
+			ListGridField[] newFields = ((UIListGridFieldArray)widget).toArray();
+			setFields(newFields);
+		}
+		else if (widget instanceof UIDataSource){
+			DataSource datasrc = ((UIDataSource)widget).getSmartObject();
+			setDataSource(datasrc);
 		}
 	}
 
@@ -57,5 +79,4 @@ public class UITreeGrid extends TreeGrid implements HasWidgets {
 		}
 		return false;
 	}
-
 }
