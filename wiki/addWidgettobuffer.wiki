@@ -1,4 +1,4 @@
-add(Widget) thro buffer node rather than directly to parent node.
+#summary add(Widget) thro buffer node rather than directly to parent node.
 
 = Introduction =
 There two ways to add widgets to a parent node.
