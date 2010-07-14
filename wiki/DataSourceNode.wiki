@@ -1,0 +1,56 @@
+#summary Example for defining DataSource as UiBinder node
+
+HelloPane.java:
+{{{
+package holy.cow;
+
+public class HelloPane
+extends LazyCanvas<HLayout>{
+
+  private static HelloPaneUiBinder uiBinder
+    = GWT.create(HelloPaneUiBinder.class);
+
+  interface HelloPaneUiBinder extends UiBinder<HLayout, HelloPane> {}
+
+  public HelloPane() {
+  }
+
+  @Override
+  protected HLayout createCanvas() {
+    return uiBinder.createAndBindUi(this);
+  }
+  
+  @UiField HLayout mainLayout;
+  
+  public ListGridInit listGridInit(){
+    return new ListGridInit() {
+      @Override public void init(ListGrid listGrid) {
+        listGrid.setAutoFetchData(true);
+        // perform other settings if necessary
+      }
+    };
+  }
+}
+}}}
+
+
+HelloPane.ui.xml:
+{{{
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:zs="urn:import:org.synthful.smartgwt.client.widgets"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:with field='code' type='holy.cow.HelloPane'/>
+  <zs:UIHLayout ui:field="mainLayout">
+    <zs:UITreeGrid showResizeBar='true' width='100px' init='{code.listGridInit}'>
+      <zs:UITreeGridField name='header'>Information</zs:UITreeGridField>
+      <zs:UIDataSource titleField='caption' recordXPath='/nodes/node' dataSrcID='info'
+        dataURL='uidata/info.xml' clientOnly='true'>
+        <zs:UIDataSourceTextField name="caption">Caption</zs:UIDataSourceTextField>
+        <zs:UIDataSourceIntegerField name='nid' required='true' primaryKey='true'>Id</zs:UIDataSourceIntegerField>
+        <zs:UIDataSourceIntegerField name='pnid' required='true' foreignKey='info.nid' rootValue='1'>Parent Id</zs:UIDataSourceIntegerField>
+        <zs:UIDataSourceLinkField name='action'>Action</zs:UIDataSourceLinkField>
+      </zs:UIDataSource>
+    </zs:UITreeGrid>
+  </zs:UIHLayout>
+</ui:UiBinder> 
+}}}
