@@ -35,6 +35,13 @@ extends LazyCanvas<HLayout>{
 
 
 HelloPane.ui.xml:
+Note that Smart data classes require you to setID(String srcID) because srcID is used as the root denominator in referencing the data fields. SmartGWT's setID method has been mapped to setDataSrcID for uibinder to avoid confusion with GWT's own setId.
+
+Note the correspondence of
+  *  dataSrcID='info' in UIDataSource
+  * and foreignKey='info.nid'
+in illustrating the employment of a data class ID.
+
 {{{
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
   xmlns:zs="urn:import:org.synthful.smartgwt.client.widgets"
