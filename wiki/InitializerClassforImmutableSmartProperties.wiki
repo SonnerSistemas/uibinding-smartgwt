@@ -1,0 +1,84 @@
+#summary Using initializer classes for immutable properties of a Smart object.
+
+= Introduction =
+The following code will encounter IllegalStateException at runtime on the client-side:
+
+{{{
+<zs:UITreeGrid  autoFetchData='true'>
+  <!-- children nodes -->
+</zs:UITreeGrid>
+}}}
+
+The reason being, autoFetchData attribute of TreeGrid cannot be changed after the TreeGrid is created.
+
+= Details =
+UiBinder causes the TreeGrid object to be created first and then apply  setAutoFetchData to that object. Since autoFetchData attribute cannot be changed after TreeGrid is instantiated, the client-side runtime would throw IllegalStateException.
+
+= Solution =
+The solution to that is having a initializer:
+{{{
+public interface ListGridInit{
+	void init(ListGrid listGrid);
+}
+}}}
+
+Then the TreeGrid should have the constructors:
+{{{
+public UITreeGrid() {
+  super();
+}
+
+@UiConstructor
+public UITreeGrid(ListGridInit init) {
+  super();
+  init.init(this);
+}
+}}}
+
+
+And the patronising class:
+{{{
+public class HelloPane
+extends LazyCanvas<HLayout>{
+
+  private static HelloPaneUiBinder uiBinder
+    = GWT.create(HelloPaneUiBinder.class);
+
+  interface HelloPaneUiBinder extends UiBinder<HLayout, HelloPane> {}
+
+  public HelloPane() {
+  }
+
+  @Override
+  protected HLayout createCanvas() {
+    return uiBinder.createAndBindUi(this);
+  }
+
+  @UiField HLayout mainLayout;
+  
+  public ListGridInit listGridInit(){
+    return this.init;
+  }
+  
+  ListGridInit init = new ListGridInit() {
+    @Override
+    public void init(ListGrid listGrid) {
+      listGrid.setAutoFetchData(true);
+    }
+  };
+}
+}}}
+
+The patronising class's ui.xml:
+{{{
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:zs="urn:import:org.synthful.smartgwt.client.widgets"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:with field='code' type='holy.cow.HelloPane'/>
+  <zs:UIHLayout ui:field="mainLayout">
+    <zs:UITreeGrid showResizeBar='true' width='100px' init='{code.listGridInit}'>
+      <!-- child nodes' definition -->
+    </zs:UITreeGrid>
+  </zs:UIHLayout>
+</ui:UiBinder>
+}}}
