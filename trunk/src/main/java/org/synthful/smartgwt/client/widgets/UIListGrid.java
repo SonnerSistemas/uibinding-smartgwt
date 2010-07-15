@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.synthful.smartgwt.client.ListGridInit;
-
-import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 
@@ -16,12 +14,6 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 
 	public UIListGrid() {
 		super();
-	}
-
-	@UiConstructor
-	public UIListGrid(ListGridInit init) {
-		super();
-		init.init(this);
 	}
 
 	@Override
@@ -40,6 +32,10 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 		else if (widget instanceof UIListGridFieldArray){
 			ListGridField[] newFields = ((UIListGridFieldArray)widget).toArray();
 			setFields(newFields);
+		}
+		else if (widget instanceof UIDataSource){
+			DataSource datasrc = ((UIDataSource)widget).getSmartObject();
+			setDataSource(datasrc);
 		}
 	}
 
