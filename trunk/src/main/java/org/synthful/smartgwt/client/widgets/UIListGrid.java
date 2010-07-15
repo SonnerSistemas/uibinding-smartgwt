@@ -33,10 +33,6 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 			ListGridField[] newFields = ((UIListGridFieldArray)widget).toArray();
 			setFields(newFields);
 		}
-		else if (widget instanceof UIDataSource){
-			DataSource datasrc = ((UIDataSource)widget).getSmartObject();
-			setDataSource(datasrc);
-		}
 	}
 
 	@Override
