@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.synthful.smartgwt.client.ListGridInit;
-
-import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.data.DataSource;
@@ -17,12 +14,6 @@ public class UITreeGrid extends TreeGrid implements HasWidgets {
 	
 	public UITreeGrid() {
 		super();
-	}
-
-	@UiConstructor
-	public UITreeGrid(ListGridInit init) {
-		super();
-		init.init(this);
 	}
 
 	@Override
