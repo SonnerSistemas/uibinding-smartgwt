@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 
@@ -31,6 +32,10 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 		else if (widget instanceof UIListGridFieldArray){
 			ListGridField[] newFields = ((UIListGridFieldArray)widget).toArray();
 			setFields(newFields);
+		}
+		else if (widget instanceof UIDataSource){
+			DataSource datasrc = ((UIDataSource)widget).getSmartObject();
+			setDataSource(datasrc);
 		}
 	}
 

@@ -10,8 +10,8 @@ import org.synthful.smartgwt.client.UIMasquerade;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.core.DataClass;
@@ -164,15 +164,6 @@ implements UIMasquerade<DataSource>, HasWidgets {
 
 	public Boolean getAutoDeriveTitles() {
 		return datasource.getAutoDeriveTitles();
-	}
-
-	public void setBeanClassName(String beanClassName)
-			throws IllegalStateException {
-		datasource.setBeanClassName(beanClassName);
-	}
-
-	public String getBeanClassName() {
-		return datasource.getBeanClassName();
 	}
 
 	public void setProperty(String property, String value) {
