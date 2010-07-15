@@ -553,10 +553,6 @@ implements UIMasquerade<DataSource>, HasWidgets {
 		datasource.invalidateCache();
 	}
 
-	public void performCustomOperation(String operationId, Record data) {
-		datasource.performCustomOperation(operationId, data);
-	}
-
 	public void performCustomOperation(String operationId, Record data,
 			DSCallback callback, DSRequest requestProperties) {
 		datasource.performCustomOperation(operationId, data, callback,
