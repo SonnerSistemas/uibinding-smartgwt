@@ -22,13 +22,10 @@ extends LazyCanvas<HLayout>{
   
   @UiField HLayout mainLayout;
   
-  public ListGridInit listGridInit(){
-    return new ListGridInit() {
-      @Override public void init(ListGrid listGrid) {
-        listGrid.setAutoFetchData(true);
-        // perform other settings if necessary
-      }
-    };
+  @UiFactory UITreeGrid mkTreeGrid(){ 
+    UITreeGrid treeGrid = new UITreeGrid();
+    treeGrid.setAutoFetchData(true);
+    return treeGrid;
   }
 }
 }}}
