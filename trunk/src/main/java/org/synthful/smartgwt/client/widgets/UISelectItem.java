@@ -2,7 +2,10 @@ package org.synthful.smartgwt.client.widgets;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.synthful.smartgwt.client.util.UISelectItemFormat;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
@@ -68,6 +71,43 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		this.item = item;
 	}
 
+	@SuppressWarnings("unchecked")
+	private List valuesList;
+	
+	@SuppressWarnings("unchecked")
+	public void setValues(List values) {
+		LinkedHashMap<String, String> innerValues = new LinkedHashMap<String, String>();
+		this.valuesList = values;
+		for(int i=0; i < values.size(); i++) {
+			Object obj = values.get(i);
+			if(obj instanceof UISelectItemFormat) {
+				innerValues.put(Integer.toString(i), ((UISelectItemFormat)obj).getComboDescription());
+			}
+			else {
+				innerValues.put(Integer.toString(i), obj.toString());
+			}
+		}
+		setValueMap(innerValues);
+	}
+	
+	public Object getSelectedObject() {
+		Object objSelected = null;
+		ListGridRecord record = getSelectedRecord();
+		if(valuesList != null && record != null) {
+			for(String attrName : record.getAttributes()) {
+				if(attrName.startsWith("isc_SelectItem_")) {
+					String idString = record.getAttribute(attrName);
+					int id = Integer.parseInt(idString);
+					objSelected = valuesList.get(id);
+					break;
+				}
+			}
+		}
+		return objSelected;
+	}
+	
+	
+	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return item.addBlurHandler(handler);
 	}
