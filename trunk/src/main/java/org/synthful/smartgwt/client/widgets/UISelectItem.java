@@ -80,13 +80,11 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		LinkedHashMap<String, String> innerValues = new LinkedHashMap<String, String>();
 		this.valuesList = values;
 		int key = 0;
-		int size = values.size();
 		if(emptyOption) {
 			innerValues.put(Integer.toString(key), "");
-			size++;
 			key++;
 		}
-		for(int i=0; i < size; i++) {
+		for(int i=0; i < values.size(); i++) {
 			Object obj = values.get(i);
 			if(obj instanceof UISelectItemFormat) {
 				innerValues.put(Integer.toString(key), ((UISelectItemFormat)obj).getComboDescription());
