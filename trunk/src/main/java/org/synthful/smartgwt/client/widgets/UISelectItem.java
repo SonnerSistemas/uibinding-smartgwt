@@ -73,18 +73,23 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 
 	@SuppressWarnings("unchecked")
 	private List valuesList;
+	private boolean emptyOption;
 	
 	@SuppressWarnings("unchecked")
 	public void setValues(List values) {
 		LinkedHashMap<String, String> innerValues = new LinkedHashMap<String, String>();
 		this.valuesList = values;
 		for(int i=0; i < values.size(); i++) {
-			Object obj = values.get(i);
-			if(obj instanceof UISelectItemFormat) {
-				innerValues.put(Integer.toString(i), ((UISelectItemFormat)obj).getComboDescription());
-			}
-			else {
-				innerValues.put(Integer.toString(i), obj.toString());
+			if(i==0 && emptyOption) {
+				innerValues.put(Integer.toString(i), "");
+			} else {
+				Object obj = values.get(i);
+				if(obj instanceof UISelectItemFormat) {
+					innerValues.put(Integer.toString(i), ((UISelectItemFormat)obj).getComboDescription());
+				}
+				else {
+					innerValues.put(Integer.toString(i), obj.toString());
+				}
 			}
 		}
 		setValueMap(innerValues);
@@ -103,7 +108,13 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		return objSelected;
 	}
 	
-	
+	public void setEmptyOption(boolean emptyOption) {
+		this.emptyOption = emptyOption;
+	}
+
+	public boolean getEmptyOption() {
+		return this.emptyOption;
+	}
 	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return item.addBlurHandler(handler);
