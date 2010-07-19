@@ -1,5 +1,7 @@
 package org.synthful.smartgwt.client.widgets;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -77,7 +79,14 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	
 	@SuppressWarnings("unchecked")
 	public void setValues(List values) {
-		this.valuesList = values;
+		/*
+		 * Collections.copy only copys if dest/src have the same size
+		 */
+		this.valuesList = new ArrayList();
+		for(Object obj : values) {
+			valuesList.add(new Object());
+		}
+		Collections.copy(this.valuesList, values);
 		LinkedHashMap<String, String> innerValues = new LinkedHashMap<String, String>();
 		if(emptyOption) {
 			innerValues.put("", "");
