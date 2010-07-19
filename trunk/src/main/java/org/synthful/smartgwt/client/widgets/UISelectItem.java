@@ -92,15 +92,12 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	
 	public Object getSelectedObject() {
 		Object objSelected = null;
-		ListGridRecord record = getSelectedRecord();
-		if(valuesList != null && record != null) {
-			for(String attrName : record.getAttributes()) {
-				if(attrName.startsWith("isc_SelectItem_")) {
-					String idString = record.getAttribute(attrName);
-					int id = Integer.parseInt(idString);
-					objSelected = valuesList.get(id);
-					break;
-				}
+		String idString = (String) getValue();
+		if(idString != null && !"".equals(idString)) {
+			try {
+				int id = Integer.parseInt(idString);
+				objSelected = valuesList.get(id);
+			} catch (NumberFormatException e) {
 			}
 		}
 		return objSelected;
