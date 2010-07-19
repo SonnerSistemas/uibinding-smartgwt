@@ -83,10 +83,11 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		}
 		for(int i=0; i < values.size(); i++) {
 			Object obj = values.get(i);
-			if(obj instanceof UISelectItemFormat) {
+			if (obj == null){
+				innerValues.put(Integer.toString(i), "");
+			} else if(obj instanceof UISelectItemFormat) {
 				innerValues.put(Integer.toString(i), ((UISelectItemFormat)obj).getComboDescription());
-			}
-			else {
+			} else {
 				innerValues.put(Integer.toString(i), obj.toString());
 			}
 		}
