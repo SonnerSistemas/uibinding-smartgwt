@@ -1,5 +1,6 @@
 package org.synthful.smartgwt.client.widgets;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -80,6 +81,7 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	@SuppressWarnings("unchecked")
 	public void setValues(List values) {
 		LinkedHashMap<String, String> innerValues = new LinkedHashMap<String, String>();
+		this.valuesList = new ArrayList();
 		Collections.copy(this.valuesList, values);
 		if(emptyOption) {
 			valuesList.add(0, null);
