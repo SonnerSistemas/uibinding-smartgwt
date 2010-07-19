@@ -78,7 +78,6 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	@SuppressWarnings("unchecked")
 	public void setValues(List values) {
 		LinkedHashMap<String, String> innerValues = new LinkedHashMap<String, String>();
-		this.valuesList = values;
 		if(emptyOption) {
 			values.add(0, null);
 		}
@@ -91,6 +90,7 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 				innerValues.put(Integer.toString(i), obj.toString());
 			}
 		}
+		this.valuesList = values;
 		setValueMap(innerValues);
 	}
 	
