@@ -74,24 +74,25 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 
 	@SuppressWarnings("unchecked")
 	private List valuesList;
-	private boolean emptyOption;
 	
 	@SuppressWarnings("unchecked")
 	public void setValues(List values) {
 		this.valuesList = new ArrayList();
+		if(getAllowEmptyValue()) {
+			valuesList.add(null);
+		}
 		for(Object obj : values) {
 			valuesList.add( obj );
 		}
 		LinkedHashMap<String, String> innerValues = new LinkedHashMap<String, String>();
-		if(emptyOption) {
-			innerValues.put("", "");
-		}
 		for(int i=0; i < valuesList.size(); i++) {
 			Object obj = valuesList.get(i);
-			if(obj instanceof UISelectItemFormat) {
-				innerValues.put(Integer.toString(i), ((UISelectItemFormat)obj).getComboDescription());
-			} else {
-				innerValues.put(Integer.toString(i), obj.toString());
+			if(obj != null) {
+				if(obj instanceof UISelectItemFormat) {
+					innerValues.put(Integer.toString(i), ((UISelectItemFormat)obj).getComboDescription());
+				} else {
+					innerValues.put(Integer.toString(i), obj.toString());
+				}
 			}
 		}
 		setValueMap(innerValues);
@@ -110,12 +111,48 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		return objSelected;
 	}
 	
-	public void setEmptyOption(boolean emptyOption) {
-		this.emptyOption = emptyOption;
+	public boolean setSelectedObject(Object objSelected) {
+		if(objSelected == null) {
+			clearValue();
+			return true;
+		}
+		for(int i=0; i < this.valuesList.size(); i++) {
+			Object obj = this.valuesList.get(i);
+			if(obj != null) {
+				if(obj.equals(objSelected)) {
+					setValue(Integer.toString(i));
+					return true;
+				}
+			}
+		}
+		
+		return false;
 	}
-
-	public boolean getEmptyOption() {
-		return this.emptyOption;
+	
+	public void setSelectedIndex(int index) {
+		if(index == 0 && getAllowEmptyValue()) {
+			clearValue();
+		}else {
+			if(index > -1 && index < valuesList.size()) {
+				setValue(Integer.toString(index));
+			}
+			else {
+				throw new IndexOutOfBoundsException("index: " + index);
+			}
+		}
+	}
+	
+	public void setSelectFirstNoBlankOption() {
+		if(getAllowEmptyValue()) {
+			setSelectedIndex(1);
+		}
+		else {
+			setSelectedIndex(0);
+		}
+	}
+	
+	public void setSelectFirstOption() {
+		setSelectedIndex(0);
 	}
 	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
