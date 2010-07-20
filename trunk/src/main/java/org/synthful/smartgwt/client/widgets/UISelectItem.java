@@ -129,6 +129,14 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		return false;
 	}
 	
+	public Object getObjectValue(int index) {
+		if (index > -1 && index < valuesList.size()) {
+			return this.valuesList.get(index);
+		} else {
+			throw new IndexOutOfBoundsException("index: " + index);
+		}
+	}
+	
 	public void setSelectedIndex(int index) {
 		if(index == 0 && getAllowEmptyValue()) {
 			clearValue();
