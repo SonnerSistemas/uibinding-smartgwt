@@ -10,6 +10,7 @@ import org.synthful.smartgwt.client.util.StringTokenizer;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.Encoding;
 import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.fields.FormItem;
@@ -91,6 +92,13 @@ implements HasWidgets, HasUICanvasAlign {
 		if(values != null && !"".equals(values.trim())) {
 			StringTokenizer st = new StringTokenizer(values, " ");
 			super.setColWidths((Object[])st.getTokens());
+		}
+	}
+	
+	public void setEncodingAsString(String encoding) {
+		Encoding encodingEnum = Encoding.valueOf(encoding.toUpperCase());
+		if(encodingEnum != null) {
+			setEncoding(encodingEnum);
 		}
 	}
 	
