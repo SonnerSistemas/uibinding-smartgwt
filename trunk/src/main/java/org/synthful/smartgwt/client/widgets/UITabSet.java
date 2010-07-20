@@ -7,6 +7,8 @@ import org.synthful.smartgwt.client.HasWidgetsUtil;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.types.Side;
+import com.smartgwt.client.widgets.Canvas;
+import com.smartgwt.client.widgets.tab.Tab;
 import com.smartgwt.client.widgets.tab.TabSet;
 
 public class UITabSet extends TabSet implements HasWidgets {
@@ -29,6 +31,21 @@ public class UITabSet extends TabSet implements HasWidgets {
 		return HasWidgetsUtil.remove(this, w);
 	}
 
+
+	/**
+	 * BUG NO IE, trying resolve here
+	 */
+	@Override
+	public void destroy() {
+		for(Tab tab : getTabs()) {
+			Canvas tabPane = tab.getPane();
+			if(tabPane != null) {
+				tabPane.destroy();
+			}
+		}
+		super.destroy();
+	}
+	
 	/**
 	 * @param value
 	 * @throws IllegalStateException
