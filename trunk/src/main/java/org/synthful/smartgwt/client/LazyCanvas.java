@@ -49,6 +49,6 @@ extends Canvas {
 	  this.canvas = w;
   }
   
-  W canvas;
+  protected W canvas;
   
 }

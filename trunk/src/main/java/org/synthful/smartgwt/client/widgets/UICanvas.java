@@ -3,16 +3,19 @@ package org.synthful.smartgwt.client.widgets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.synthful.smartgwt.client.HasUICanvasAlign;
 import org.synthful.smartgwt.client.HasWidgetsUtil;
 import org.synthful.smartgwt.client.UIMasquerade;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.Canvas;
 
 public class UICanvas
 	extends Canvas
-	implements HasWidgets
+	implements HasWidgets, HasUICanvasAlign
 {
 	@Override
 	public void add(Widget w) {
@@ -27,17 +30,19 @@ public class UICanvas
 
 	@Override
 	public Iterator<Widget> iterator() {
+		ArrayList<Widget> widgets = new ArrayList<Widget>();
+		for (Canvas cx : getChildren()){
+			widgets.add(cx);
+		}
 		return widgets.iterator();
 	}
 
 	@Override
 	public boolean remove(Widget w) {
-		this.widgets.remove(w);
 		Canvas c = getUIMasqueradedCanvas(w);
 		if (c!=null){
 			this.removeChild(c);
 		}
-		this.widgets.remove(w);
 		return HasWidgetsUtil.remove(this, w);
 	}
 		
@@ -51,5 +56,32 @@ public class UICanvas
 		return null;
 	}
 	
-	final private ArrayList<Widget> widgets = new ArrayList<Widget>();
+	public boolean showCanvas(Canvas c){
+		boolean matched=false;
+		for (Canvas cx : getChildren()){
+			if (cx!=c){
+				cx.hide();
+				matched=true;
+			}
+			else
+				cx.show();
+		}
+		return matched;
+	}
+	
+	public void hideAll(){
+		for (Canvas cx : getChildren()){
+			cx.hide();
+		}
+	}
+	
+	@Override
+	public void setLayoutHAlign(Alignment alignment) {
+		super.setLayoutAlign(alignment);
+	}
+
+	@Override
+	public void setLayoutVAlign(VerticalAlignment alignment) {
+		super.setLayoutAlign(alignment);
+	}
 }

@@ -38,6 +38,9 @@ implements HasWidgets, HasUICanvasAlign {
 			FormItem[] newFields = ((UIFormItemArray)widget).toArray();
 			setFields(newFields);
 		}
+		else if (widget instanceof UIDataSource){
+			setDataSource(((UIDataSource)widget).getSmartObject());
+		}
 	}
 
 	@Override

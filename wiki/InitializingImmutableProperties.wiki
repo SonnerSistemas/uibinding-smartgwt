@@ -1,6 +1,4 @@
-#summary Using initializing classes for immutable properties of a Smart object.
-
-#summary Using initializer classes for immutable properties of a Smart object.
+#summary Initializing Smart classes with immutable properties.
 
 = Introduction =
 The following code will encounter IllegalStateException at runtime on the client-side:

@@ -34,6 +34,10 @@ implements UIMasquerade<DataSourceField>, HasText
 	protected DataSourceField field;
 	protected FieldType type;
 
+	public UIDataSourceField(DataSourceField field) {
+		this.field = field;
+	}
+
 	public UIDataSourceField() {
 		field = new DataSourceField();
 	}

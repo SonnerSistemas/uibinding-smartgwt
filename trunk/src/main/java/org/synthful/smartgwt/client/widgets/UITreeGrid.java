@@ -37,6 +37,9 @@ public class UITreeGrid extends TreeGrid implements HasWidgets {
 			DataSource datasrc = ((UIDataSource)widget).getSmartObject();
 			setDataSource(datasrc);
 		}
+		else if (widget instanceof UITree){
+			setData(((UITree)widget).getSmartObject());
+		}
 	}
 
 	@Override

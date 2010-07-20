@@ -5,13 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.synthful.smartgwt.client.DataSourceInit;
 import org.synthful.smartgwt.client.UIMasquerade;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.core.DataClass;
@@ -37,21 +36,8 @@ public class UIDataSource
 extends Widget
 implements UIMasquerade<DataSource>, HasWidgets {
 
-	final protected DataSource datasource;
-	final List<Widget> widgets = new ArrayList<Widget>();
+	final protected DataSource datasource = new DataSource();
 	
-	public UIDataSource() {
-		super();
-		this.datasource = new DataSource();
-	}
-
-	public UIDataSource(DataSourceInit init) {
-		super();
-		this.datasource = new DataSource();
-		init.init(datasource);
-	}
-
-
 	@Override
 	public void add(Widget w) {
 		if (w instanceof UIDataSourceField){
@@ -65,7 +51,11 @@ implements UIMasquerade<DataSource>, HasWidgets {
 
 	@Override
 	public Iterator<Widget> iterator() {
-		return widgets.iterator();
+		List<Widget> fields = new ArrayList<Widget>(datasource.getFields().length);
+		for (DataSourceField field : datasource.getFields()) {
+			fields.add(new UIDataSourceField(field));
+		}
+		return fields.iterator();
 	}
 
 	@Override
@@ -580,11 +570,11 @@ implements UIMasquerade<DataSource>, HasWidgets {
 		datasource.setDataProtocol(dataProtocol);
 	}
 
-	public void setDefaultParams(Map defaultParams) {
+	public void setDefaultParams(Map<?, ?> defaultParams) {
 		datasource.setDefaultParams(defaultParams);
 	}
 
-	public Map getDefaultParams() {
+	public Map<?, ?> getDefaultParams() {
 		return datasource.getDefaultParams();
 	}
 
