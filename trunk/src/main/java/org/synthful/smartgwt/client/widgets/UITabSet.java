@@ -33,7 +33,7 @@ public class UITabSet extends TabSet implements HasWidgets {
 
 
 	/**
-	 * BUG NO IE, trying resolve here
+	 * BUG ON IE, trying resolve here
 	 */
 	@Override
 	public void destroy() {
