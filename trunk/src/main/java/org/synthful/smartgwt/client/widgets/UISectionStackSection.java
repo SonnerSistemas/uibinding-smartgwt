@@ -29,7 +29,10 @@ public class UISectionStackSection extends Widget implements HasWidgets, UIMasqu
 
 	@Override
 	public void add(Widget w) {
-		if(w instanceof Canvas){
+		if (w instanceof UISectionStackSectionControls){
+			Canvas[] controls = ((UISectionStackSectionControls)w).toArray();
+			field.setControls(controls);
+		} else if (w instanceof Canvas){
 			field.addItem((Canvas) w);
 		}
 	}
