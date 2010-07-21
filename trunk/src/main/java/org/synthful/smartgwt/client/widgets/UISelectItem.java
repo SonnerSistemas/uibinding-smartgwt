@@ -176,6 +176,16 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	public void setSelectFirstOption() {
 		setSelectedIndex(0);
 	}
+
+	/**
+	 * @return -1 if not initialized with 
+	 *            setValues(Enum ...)
+	 *            setValues(Object ...)
+	 *            setValues(List ...)
+	 */
+	public int getItemsSize() {
+		return (valuesList != null) ? valuesList.size() : -1;
+	}
 	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return item.addBlurHandler(handler);
