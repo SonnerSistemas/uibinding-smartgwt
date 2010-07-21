@@ -75,6 +75,16 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	@SuppressWarnings("unchecked")
 	private List valuesList;
 	
+	
+	@SuppressWarnings("unchecked")
+	public void setValues(Object... values) {
+		List objects = new ArrayList();
+		for(Object o : values) {
+			objects.add(o);
+		}
+		setValues(objects);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void setValues(List values) {
 		this.valuesList = new ArrayList();
