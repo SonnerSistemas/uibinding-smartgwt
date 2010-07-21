@@ -76,6 +76,10 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	private List valuesList;
 	
 	
+	public void setValues(Enum... emuns) {
+		setValues((Object[])emuns);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void setValues(Object... values) {
 		List objects = new ArrayList();
