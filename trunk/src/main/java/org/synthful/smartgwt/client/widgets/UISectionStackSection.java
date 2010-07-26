@@ -39,9 +39,8 @@ public class UISectionStackSection extends Widget implements HasWidgets, UIMasqu
 
 	@Override
 	public void clear() {
-		
 	}
-
+	
 	@Override
 	public Iterator<Widget> iterator() {
 		Canvas[] fields = field.getItems();
