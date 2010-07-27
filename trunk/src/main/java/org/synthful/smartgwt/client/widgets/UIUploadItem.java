@@ -57,6 +57,24 @@ public class UIUploadItem extends UIFormItem<UploadItem>{
 		item = new UploadItem();
 	}
 	
+	public String getFileName() {
+		String value = (String) getValue();
+		if(value != null && !"".equals(value.trim())) {
+			String fileName = null;
+			try {
+				int lastIndex = value.lastIndexOf("/");
+				if(lastIndex == -1) {
+					lastIndex = value.lastIndexOf("\\");
+				}
+				if(lastIndex != -1) {
+					fileName = value.substring(lastIndex+1, value.length());
+				}
+			}catch(Exception e) {}
+			return fileName;
+		}
+		return null;
+	}
+	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return item.addBlurHandler(handler);
 	}
@@ -1080,4 +1098,6 @@ public class UIUploadItem extends UIFormItem<UploadItem>{
 	public Boolean validate() {
 		return item.validate();
 	}
+
+
 }
