@@ -60,7 +60,7 @@ public class UIUploadItem extends UIFormItem<UploadItem>{
 	public String getFileName() {
 		String value = (String) getValue();
 		if(value != null && !"".equals(value.trim())) {
-			String fileName = null;
+			String fileName = value;
 			try {
 				int lastIndex = value.lastIndexOf("/");
 				if(lastIndex == -1) {
