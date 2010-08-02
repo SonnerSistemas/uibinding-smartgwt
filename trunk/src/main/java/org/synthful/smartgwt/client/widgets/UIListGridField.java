@@ -1059,9 +1059,9 @@ public class UIListGridField extends Widget implements UIMasquerade<ListGridFiel
 		field.setSortNormalizer(normalizer);
 	}
 
-	public void setSummaryFunction(SummaryFunction summaryFunction) {
-		field.setSummaryFunction(summaryFunction);
-	}
+//	public void setSummaryFunction(SummaryFunction summaryFunction) {
+//		field.setSummaryFunction(summaryFunction);
+//	}
 
 	public void setSummaryFunction(SummaryFunctionType summaryFunction) {
 		field.setSummaryFunction(summaryFunction);
