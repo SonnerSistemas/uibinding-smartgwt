@@ -653,10 +653,6 @@ public class UITextAreaItem extends UIFormItem<TextAreaItem>{
 		return item.getValueIconWidth();
 	}
 
-	public Boolean getVisible() {
-		return item.getVisible();
-	}
-
 	public int getVisibleHeight() {
 		return item.getVisibleHeight();
 	}
@@ -1327,10 +1323,6 @@ public class UITextAreaItem extends UIFormItem<TextAreaItem>{
 
 	public void setValueMap(String... valueMap) {
 		item.setValueMap(valueMap);
-	}
-
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
 	}
 
 	public void setWidth(int width) {

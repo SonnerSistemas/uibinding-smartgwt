@@ -1397,10 +1397,6 @@ public class UIDateItem extends UIFormItem<DateItem> {
 		item.setValueMap(valueMap);
 	}
 
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
-	}
-
 	public void setWidth(int width) {
 		item.setWidth(width);
 	}

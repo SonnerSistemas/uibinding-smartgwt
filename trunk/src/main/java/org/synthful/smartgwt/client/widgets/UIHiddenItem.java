@@ -488,9 +488,6 @@ public class UIHiddenItem extends UIFormItem<HiddenItem>{
 	public Integer getValueIconWidth() {
 		return item.getValueIconWidth();
 	}
-	public Boolean getVisible() {
-		return item.getVisible();
-	}
 	public int getVisibleHeight() {
 		return item.getVisibleHeight();
 	}
@@ -976,9 +973,6 @@ public class UIHiddenItem extends UIFormItem<HiddenItem>{
 	}
 	public void setValueMap(String... valueMap) {
 		item.setValueMap(valueMap);
-	}
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
 	}
 	public void setWidth(int width) {
 		item.setWidth(width);

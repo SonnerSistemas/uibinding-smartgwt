@@ -908,10 +908,6 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		return item.getValues();
 	}
 
-	public Boolean getVisible() {
-		return item.getVisible();
-	}
-
 	public int getVisibleHeight() {
 		return item.getVisibleHeight();
 	}
@@ -1703,10 +1699,6 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 
 	public void setValues(String... values) {
 		item.setValues(values);
-	}
-
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
 	}
 
 	public void setWidth(int width) {

@@ -649,10 +649,6 @@ public class UIButtonItem extends UIFormItem<ButtonItem>{
 		return item.getValueIconWidth();
 	}
 
-	public Boolean getVisible() {
-		return item.getVisible();
-	}
-
 	public int getVisibleHeight() {
 		return item.getVisibleHeight();
 	}
@@ -1315,10 +1311,6 @@ public class UIButtonItem extends UIFormItem<ButtonItem>{
 
 	public void setValueMap(String... valueMap) {
 		item.setValueMap(valueMap);
-	}
-
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
 	}
 
 	public void setWidth(int width) {

@@ -689,10 +689,6 @@ public class UITimeItem extends UIFormItem<TimeItem>{
 		return item.getValueIconWidth();
 	}
 
-	public Boolean getVisible() {
-		return item.getVisible();
-	}
-
 	public int getVisibleHeight() {
 		return item.getVisibleHeight();
 	}
@@ -1395,10 +1391,6 @@ public class UITimeItem extends UIFormItem<TimeItem>{
 
 	public void setValueMap(String... valueMap) {
 		item.setValueMap(valueMap);
-	}
-
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
 	}
 
 	public void setWidth(int width) {

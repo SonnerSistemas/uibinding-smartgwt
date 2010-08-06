@@ -736,10 +736,6 @@ public class UIRadioGroupItem extends UIFormItem<RadioGroupItem> {
 		return item.getVertical();
 	}
 
-	public Boolean getVisible() {
-		return item.getVisible();
-	}
-
 	public int getVisibleHeight() {
 		return item.getVisibleHeight();
 	}
@@ -1398,10 +1394,6 @@ public class UIRadioGroupItem extends UIFormItem<RadioGroupItem> {
 
 	public void setVertical(Boolean vertical) {
 		item.setVertical(vertical);
-	}
-
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
 	}
 
 	public void setWidth(int width) {

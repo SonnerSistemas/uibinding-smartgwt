@@ -662,10 +662,6 @@ public class UIDateRangeItem extends UIFormItem<DateRangeItem> {
 		return item.getValueIconWidth();
 	}
 
-	public Boolean getVisible() {
-		return item.getVisible();
-	}
-
 	public int getVisibleHeight() {
 		return item.getVisibleHeight();
 	}
@@ -1348,10 +1344,6 @@ public class UIDateRangeItem extends UIFormItem<DateRangeItem> {
 
 	public void setValueMap(String... valueMap) {
 		item.setValueMap(valueMap);
-	}
-
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
 	}
 
 	public void setWidth(int width) {

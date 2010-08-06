@@ -636,10 +636,6 @@ public class UIStaticTextItem extends UIFormItem<StaticTextItem>{
 		return item.getValueIconWidth();
 	}
 
-	public Boolean getVisible() {
-		return item.getVisible();
-	}
-
 	public int getVisibleHeight() {
 		return item.getVisibleHeight();
 	}
@@ -1298,10 +1294,6 @@ public class UIStaticTextItem extends UIFormItem<StaticTextItem>{
 
 	public void setValueMap(String... valueMap) {
 		item.setValueMap(valueMap);
-	}
-
-	public void setVisible(Boolean visible) {
-		item.setVisible(visible);
 	}
 
 	public void setWidth(int width) {

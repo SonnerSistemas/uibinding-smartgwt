@@ -1294,7 +1294,7 @@ abstract public class UIFormItem<F extends FormItem>
 		item.setValueMap(valueMap);
 	}
 
-	public void setVisible(Boolean visible) {
+	public void setVisible(boolean visible) {
 		item.setVisible(visible);
 	}
 
