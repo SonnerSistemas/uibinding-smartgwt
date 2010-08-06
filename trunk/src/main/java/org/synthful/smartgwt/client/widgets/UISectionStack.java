@@ -29,6 +29,16 @@ public class UISectionStack extends SectionStack implements HasWidgets{
 			addMember(w);	
 		}
 	}
+	
+	@Override
+	public void destroy() {
+		for(SectionStackSection section : getSections()) {
+			for(Canvas item : section.getItems()) {
+				item.destroy();
+			}
+		}
+		super.destroy();
+	}
 
 	@Override
 	public Iterator<Widget> iterator(){
