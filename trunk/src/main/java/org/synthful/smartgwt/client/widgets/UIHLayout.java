@@ -6,6 +6,7 @@ import org.synthful.smartgwt.client.HasWidgetsUtil;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.HLayout;
 
 public class UIHLayout
@@ -24,5 +25,20 @@ public class UIHLayout
 	@Override
 	public boolean remove(Widget w){
 		return HasWidgetsUtil.remove(this, w);
+	}
+	
+	@Override
+	public void destroy() {
+		try {
+			for(Canvas member : getMembers()) {
+				member.destroy();
+			}
+			for(Canvas child : getChildren()) {
+				child.destroy();
+			}
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		super.destroy();
 	}
 }

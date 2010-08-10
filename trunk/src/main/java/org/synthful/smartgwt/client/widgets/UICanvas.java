@@ -84,4 +84,12 @@ public class UICanvas
 	public void setLayoutVAlign(VerticalAlignment alignment) {
 		super.setLayoutAlign(alignment);
 	}
+	
+	@Override
+	public void destroy() {
+		for(Canvas child : getChildren()) {
+			child.destroy();
+		}
+		super.destroy();
+	}
 }

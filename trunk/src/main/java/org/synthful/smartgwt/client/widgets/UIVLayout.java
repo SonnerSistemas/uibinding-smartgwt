@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.VerticalAlignment;
+import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 public class UIVLayout
@@ -33,5 +34,20 @@ public class UIVLayout
 	}
 	public void setDefaultLayoutVAlign(VerticalAlignment alignment){
 		super.setDefaultLayoutAlign(alignment);
+	}
+	
+	@Override
+	public void destroy() {
+		try {
+			for(Canvas member : getMembers()) {
+				member.destroy();
+			}
+			for(Canvas child : getChildren()) {
+				child.destroy();
+			}
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		super.destroy();
 	}
 }
