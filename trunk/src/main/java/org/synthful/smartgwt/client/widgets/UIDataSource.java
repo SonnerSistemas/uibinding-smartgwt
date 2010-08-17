@@ -138,14 +138,14 @@ implements UIMasquerade<DataSource>, HasWidgets {
 		return datasource.toString();
 	}
 
-	public void setAutoDeriveSchema(Boolean autoDeriveSchema)
-			throws IllegalStateException {
-		datasource.setAutoDeriveSchema(autoDeriveSchema);
-	}
-
-	public Boolean getAutoDeriveSchema() {
-		return datasource.getAutoDeriveSchema();
-	}
+//	public void setAutoDeriveSchema(Boolean autoDeriveSchema)
+//			throws IllegalStateException {
+//		datasource.setAutoDeriveSchema(autoDeriveSchema);
+//	}
+//
+//	public Boolean getAutoDeriveSchema() {
+//		return datasource.getAutoDeriveSchema();
+//	}
 
 	public void setAutoDeriveTitles(Boolean autoDeriveTitles)
 			throws IllegalStateException {
