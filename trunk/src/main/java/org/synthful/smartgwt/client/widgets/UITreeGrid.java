@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.data.DataSource;
+import com.smartgwt.client.data.RecordList;
 import com.smartgwt.client.widgets.grid.ListGridField;
 import com.smartgwt.client.widgets.tree.TreeGrid;
 
@@ -72,5 +73,14 @@ public class UITreeGrid extends TreeGrid implements HasWidgets {
 			return remove;
 		}
 		return false;
+	}
+	/**
+	 * Remove all records
+	 */
+	public void removeAll() {
+		RecordList recordList = getOriginalRecordList();
+		for(int i=0; i < recordList.getLength(); i++) {
+			removeData( recordList.get(i) );
+		}
 	}
 }
