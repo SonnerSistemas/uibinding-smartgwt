@@ -77,9 +77,16 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 	 */
 	public void removeAll() {
 		RecordList recordList = getOriginalRecordList();
-		while (recordList.getLength()>0){
-			removeData( recordList.get(0) );
+		if(getDataSource() == null) {
+			while (recordList.getLength()>0){
+				removeData( recordList.get(0) );
+			}
+		} else {
+			for(int i=0; i<recordList.getLength(); i++) {
+				removeData( recordList.get(i) );
+			}
 		}
+		
 	}
 
 }
