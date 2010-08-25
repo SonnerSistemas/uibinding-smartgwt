@@ -86,7 +86,6 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 				removeData( recordList.get(i) );
 			}
 		}
-		
 	}
 
 }
