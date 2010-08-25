@@ -79,8 +79,8 @@ public class UITreeGrid extends TreeGrid implements HasWidgets {
 	 */
 	public void removeAll() {
 		RecordList recordList = getOriginalRecordList();
-		for(int i=0; i < recordList.getLength(); i++) {
-			removeData( recordList.get(i) );
+		while (recordList.getLength()>0){
+			removeData( recordList.get(0) );
 		}
 	}
 }
