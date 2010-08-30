@@ -33,9 +33,6 @@ public class UIHLayout
 			for(Canvas member : getMembers()) {
 				member.destroy();
 			}
-			for(Canvas child : getChildren()) {
-				child.destroy();
-			}
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
