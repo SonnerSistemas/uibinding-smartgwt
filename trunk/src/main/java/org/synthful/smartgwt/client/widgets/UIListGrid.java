@@ -87,5 +87,13 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 			}
 		}
 	}
+	
+	@Override
+	public void destroy() {
+		if(getDataSource() != null) {
+			getDataSource().destroy();
+		}
+		super.destroy();
+	}
 
 }

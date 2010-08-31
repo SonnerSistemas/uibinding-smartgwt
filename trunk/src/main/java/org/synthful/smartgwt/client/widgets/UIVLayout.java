@@ -43,7 +43,7 @@ public class UIVLayout
 				member.destroy();
 			}
 		} catch (Throwable e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		super.destroy();
 	}
