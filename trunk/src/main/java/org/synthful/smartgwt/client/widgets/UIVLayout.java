@@ -2,6 +2,7 @@ package org.synthful.smartgwt.client.widgets;
 
 import java.util.Iterator;
 
+import org.synthful.smartgwt.client.HasUILayoutAlign;
 import org.synthful.smartgwt.client.HasWidgetsUtil;
 
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -13,7 +14,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
 
 public class UIVLayout
 	extends VLayout
-	implements HasWidgets
+	implements HasWidgets,HasUILayoutAlign
 {
 	public void add(Widget w){
 		HasWidgetsUtil.add(this, w);
@@ -37,6 +38,15 @@ public class UIVLayout
 	}
 	
 	@Override
+	public void setLayoutHAlign(Alignment alignment) {
+		setAlign(alignment);
+	}
+
+	@Override
+	public void setLayoutVAlign(VerticalAlignment alignment) {
+		setAlign(alignment);
+	}
+	@Override
 	public void destroy() {
 		try {
 			for(Canvas member : getMembers()) {
@@ -47,4 +57,6 @@ public class UIVLayout
 		}
 		super.destroy();
 	}
+
+
 }
