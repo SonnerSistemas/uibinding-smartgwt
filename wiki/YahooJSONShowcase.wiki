@@ -78,7 +78,7 @@ implements EntryPoint{
       wrapCells="true" fixedRecordHeights="false" showAllRecords="true"/>
     <zs:UIHTMLFlow height="30px"><hr/></zs:UIHTMLFlow>
     
-    <zs:UISearchForm ui:field="yForm" groupTitle="Edit ResponseSet">
+    <zs:UISearchForm ui:field="yForm">
       <zs:UITextItem ui:field="query" name="Query" defaultValue="snowboarding"/>
     </zs:UISearchForm>
     <zs:UIButton ui:field="queryy">Query</zs:UIButton>
