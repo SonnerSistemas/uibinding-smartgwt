@@ -8,4 +8,8 @@ extends UIDataSourceField {
 	public UIDataSourceDateTimeField() {
 		field = new DataSourceDateTimeField();
 	}
+	
+    public void setUseTextField(Boolean useTextField) {
+        ((DataSourceDateTimeField)field).setUseTextField(useTextField);
+    }
 }

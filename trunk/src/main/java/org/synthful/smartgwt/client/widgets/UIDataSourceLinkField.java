@@ -8,4 +8,8 @@ extends UIDataSourceField {
 	public UIDataSourceLinkField() {
 		field = new DataSourceLinkField();
 	}
+	
+	public void setTarget(String target){
+		field.setAttribute("target", target);
+	}
 }

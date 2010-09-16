@@ -1,12 +1,11 @@
 package org.synthful.smartgwt.client.widgets;
 
 import com.google.gwt.user.client.ui.HasHTML;
-import com.google.gwt.user.client.ui.HasText;
 import com.smartgwt.client.widgets.HTMLFlow;
 
 public class UIHTMLFlow
 extends HTMLFlow
-implements HasText, HasHTML {
+implements HasHTML {
 
 	@Override
 	public String getText() {
