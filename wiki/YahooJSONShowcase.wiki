@@ -6,22 +6,35 @@ This is the SmartGWT Yahoo JSON showcase translated to UiBinder.
 
 = Java code-behind  =
 {{{
+public class Y
+implements EntryPoint{
+
+  interface YUiBinder
+  extends UiBinder<VLayout, Y> {}
+
+  private static YUiBinder uiBinder =
+    GWT.create(YUiBinder.class);
+
   @UiField UIXJSONDataSource yDataSrc;
   @UiField UIListGrid yGrid;
   @UiField UISearchForm yForm;
   @UiField UIButton queryy;
-	
+  
   @UiField UIVLayout yLayout;
- 
-  void doY(){
+  
+  @Override
+  public void onModuleLoad()(){
+    uiBinder.createAndBindUi(this);
     yGrid.setDataSource(yDataSrc.getSmartObject());
   }
-
+  
   final SearchForm form = new SearchForm();
   @UiHandler ("queryy")
   public void queryyClickHandler(ClickEvent event){
     yGrid.fetchData(yForm.getValuesAsCriteria());
   }
+}
+
 }}}
 
 = ui.xml template =
