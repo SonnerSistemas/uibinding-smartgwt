@@ -28,7 +28,6 @@ implements EntryPoint{
     yGrid.setDataSource(yDataSrc.getSmartObject());
   }
   
-  final SearchForm form = new SearchForm();
   @UiHandler ("queryy")
   public void queryyClickHandler(ClickEvent event){
     yGrid.fetchData(yForm.getValuesAsCriteria());
