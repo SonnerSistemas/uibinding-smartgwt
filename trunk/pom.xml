@@ -18,7 +18,7 @@
 
 	<properties>
 		<gwtVersion>2.0.3</gwtVersion>
-		<smartGwtVersion>2.2</smartGwtVersion>
+		<smartGwtVersion>2.3</smartGwtVersion>
 	</properties>
 
 	<dependencies>
