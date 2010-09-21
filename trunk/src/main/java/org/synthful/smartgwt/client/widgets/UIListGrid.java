@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.RecordList;
+import com.smartgwt.client.types.ListGridEditEvent;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 
@@ -94,6 +95,15 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 			getDataSource().destroy();
 		}
 		super.destroy();
+	}
+	
+	public void setEditEventAsString(String value) {
+		if(value != null) {
+			ListGridEditEvent editEvent = ListGridEditEvent.valueOf(value.toUpperCase());
+			if(editEvent != null) {
+				super.setEditEvent(editEvent);
+			}
+		}
 	}
 
 }
