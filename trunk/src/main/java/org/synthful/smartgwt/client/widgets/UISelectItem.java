@@ -1,12 +1,11 @@
 package org.synthful.smartgwt.client.widgets;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.synthful.smartgwt.client.util.UISelectItemFormat;
+import org.synthful.smartgwt.client.util.SelectItemEnchanged;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
@@ -42,7 +41,6 @@ import com.smartgwt.client.widgets.form.FormItemValueParser;
 import com.smartgwt.client.widgets.form.fields.FilterCriteriaFunction;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.FormItemIcon;
-import com.smartgwt.client.widgets.form.fields.SelectItem;
 import com.smartgwt.client.widgets.form.fields.events.BlurHandler;
 import com.smartgwt.client.widgets.form.fields.events.ChangeHandler;
 import com.smartgwt.client.widgets.form.fields.events.ChangedHandler;
@@ -62,129 +60,56 @@ import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
-public class UISelectItem extends UIFormItem<SelectItem>{
+public class UISelectItem extends UIFormItem<SelectItemEnchanged>{
 
 	public UISelectItem() {
-		item = new SelectItem();
+		item = new SelectItemEnchanged();
 	}
 	
-	public UISelectItem(SelectItem item){
+	public UISelectItem(SelectItemEnchanged item){
 		this.item = item;
 	}
 
 	@SuppressWarnings("unchecked")
-	private List valuesList;
-	
-	
 	public void setValues(Enum... emuns) {
-		setValues((Object[])emuns);
+		item.setValues(emuns);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void setValues(Object... values) {
-		List objects = new ArrayList();
-		for(Object o : values) {
-			objects.add(o);
-		}
-		setValues(objects);
+		item.setValues(values);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public void setValues(List values) {
-		this.valuesList = new ArrayList();
-		if(getAllowEmptyValue()) {
-			valuesList.add(null);
-		}
-		for(Object obj : values) {
-			valuesList.add( obj );
-		}
-		LinkedHashMap<String, String> innerValues = new LinkedHashMap<String, String>();
-		for(int i=0; i < valuesList.size(); i++) {
-			Object obj = valuesList.get(i);
-			if(obj != null) {
-				if(obj instanceof UISelectItemFormat) {
-					innerValues.put(Integer.toString(i), ((UISelectItemFormat)obj).getComboDescription());
-				} else {
-					innerValues.put(Integer.toString(i), obj.toString());
-				}
-			}
-		}
-		setValueMap(innerValues);
+		item.setValues(values);
 	}
 	
 	public Object getSelectedObject() {
-		Object objSelected = null;
-		String idString = (String) getValue();
-		if(idString != null && !"".equals(idString)) {
-			try {
-				int id = Integer.parseInt(idString);
-				objSelected = valuesList.get(id);
-			} catch (NumberFormatException e) {
-			}
-		}
-		return objSelected;
+		return item.getSelectedObject();
 	}
 	
 	public boolean setSelectedObject(Object objSelected) {
-		if(objSelected == null) {
-			clearValue();
-			return true;
-		}
-		for(int i=0; i < this.valuesList.size(); i++) {
-			Object obj = this.valuesList.get(i);
-			if(obj != null) {
-				if(obj.equals(objSelected)) {
-					setValue(Integer.toString(i));
-					return true;
-				}
-			}
-		}
-		
-		return false;
+		return item.setSelectedObject(objSelected);
 	}
 	
 	public Object getObjectValue(int index) {
-		if (index > -1 && index < valuesList.size()) {
-			return this.valuesList.get(index);
-		} else {
-			throw new IndexOutOfBoundsException("index: " + index);
-		}
+		return item.getObjectValue(index);
 	}
 	
 	public void setSelectedIndex(int index) {
-		if(index == 0 && getAllowEmptyValue()) {
-			clearValue();
-		}else {
-			if(index > -1 && index < valuesList.size()) {
-				setValue(Integer.toString(index));
-			}
-			else {
-				throw new IndexOutOfBoundsException("index: " + index);
-			}
-		}
+		item.setSelectedIndex(index);
 	}
 	
 	public void setSelectFirstNoBlankOption() {
-		if(getAllowEmptyValue()) {
-			setSelectedIndex(1);
-		}
-		else {
-			setSelectedIndex(0);
-		}
+		item.setSelectFirstNoBlankOption();
 	}
 	
 	public void setSelectFirstOption() {
-		setSelectedIndex(0);
+		item.setSelectFirstOption();
 	}
 
-	/**
-	 * @return -1 if not initialized with 
-	 *            setValues(Enum ...)
-	 *            setValues(Object ...)
-	 *            setValues(List ...)
-	 */
 	public int getItemsSize() {
-		return (valuesList != null) ? valuesList.size() : -1;
+		return item.getItemsSize();
 	}
 	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
@@ -351,7 +276,8 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	public JavaScriptObject getAttributeAsJavaScriptObject(String attribute) {
 		return item.getAttributeAsJavaScriptObject(attribute);
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	public Map getAttributeAsMap(String property) {
 		return item.getAttributeAsMap(property);
 	}
@@ -1031,7 +957,8 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 	public void setAttribute(String attribute, JavaScriptObject value) {
 		item.setAttribute(attribute, value);
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	public void setAttribute(String attribute, Map value) {
 		item.setAttribute(attribute, value);
 	}
@@ -1677,6 +1604,7 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		item.setValueIconRightPadding(valueIconRightPadding);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setValueIcons(Map valueIcons) {
 		item.setValueIcons(valueIcons);
 	}
@@ -1689,6 +1617,7 @@ public class UISelectItem extends UIFormItem<SelectItem>{
 		item.setValueIconWidth(valueIconWidth);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setValueMap(LinkedHashMap valueMap) {
 		item.setValueMap(valueMap);
 	}
