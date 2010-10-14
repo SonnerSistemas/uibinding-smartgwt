@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.synthful.smartgwt.client.util.SelectItemEnchanged;
+import org.synthful.smartgwt.client.util.SelectItemEnhanced;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
@@ -60,13 +60,13 @@ import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
-public class UISelectItem extends UIFormItem<SelectItemEnchanged>{
+public class UISelectItem extends UIFormItem<SelectItemEnhanced>{
 
 	public UISelectItem() {
-		item = new SelectItemEnchanged();
+		item = new SelectItemEnhanced();
 	}
 	
-	public UISelectItem(SelectItemEnchanged item){
+	public UISelectItem(SelectItemEnhanced item){
 		this.item = item;
 	}
 

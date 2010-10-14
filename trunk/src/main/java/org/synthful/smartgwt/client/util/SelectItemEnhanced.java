@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.smartgwt.client.widgets.form.fields.SelectItem;
 
-public class SelectItemEnchanged extends SelectItem{
+public class SelectItemEnhanced extends SelectItem{
 
 	@SuppressWarnings("unchecked")
 	private List valuesList;
@@ -54,7 +54,11 @@ public class SelectItemEnchanged extends SelectItem{
 		if(idString != null && !"".equals(idString)) {
 			try {
 				int id = Integer.parseInt(idString);
-				objSelected = valuesList.get(id);
+//				if (valuesList!=null){
+					objSelected = valuesList.get(id);
+//				} else {
+//					objSelected = null;
+//				}
 			} catch (NumberFormatException e) {
 			}
 		}
