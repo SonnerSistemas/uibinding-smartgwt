@@ -28,7 +28,7 @@ public class SelectItemEnhanced extends SelectItem{
 	@SuppressWarnings("unchecked")
 	public void setValues(List values) {
 		this.valuesList = new ArrayList();
-		if(getAllowEmptyValue()) {
+		if(getAllowEmptyValue()!=null && getAllowEmptyValue()) {
 			valuesList.add(null);
 		}
 		for(Object obj : values) {
