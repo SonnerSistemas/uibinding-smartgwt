@@ -17,7 +17,7 @@
 	</repositories>
 
 	<properties>
-		<gwtVersion>2.0.3</gwtVersion>
+		<gwtVersion>2.0.4</gwtVersion>
 		<smartGwtVersion>2.3</smartGwtVersion>
 	</properties>
 
