@@ -1665,4 +1665,8 @@ public class UISelectItem extends UIFormItem<SelectItemEnhanced>{
 	public Boolean validate() {
 		return item.validate();
 	}
+	
+	public void clearValues(){
+		item.clearValues();
+	}
 }
