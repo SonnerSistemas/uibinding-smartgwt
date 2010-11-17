@@ -2,6 +2,7 @@ package org.synthful.smartgwt.client.util;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.smartgwt.client.widgets.form.fields.SelectItem;
@@ -125,5 +126,9 @@ public class SelectItemEnhanced extends SelectItem{
 	 */
 	public int getItemsSize() {
 		return (valuesList != null) ? valuesList.size() : -1;
+	}
+	public void clearValues(){
+		setValues(new LinkedList());
+		clearValue();
 	}
 }
