@@ -84,6 +84,10 @@ public class UISelectItem extends UIFormItem<SelectItemEnhanced>{
 		item.setValues(values);
 	}
 	
+	public List getValuesList(){
+		return item.getValuesList();
+	}
+	
 	public Object getSelectedObject() {
 		return item.getSelectedObject();
 	}

@@ -131,4 +131,8 @@ public class SelectItemEnhanced extends SelectItem{
 		setValues(new LinkedList());
 		clearValue();
 	}
+	
+	public List getValuesList(){
+		return valuesList;
+	}
 }
