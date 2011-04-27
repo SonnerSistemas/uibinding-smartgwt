@@ -18,7 +18,6 @@ import com.smartgwt.client.data.FieldValueExtractor;
 import com.smartgwt.client.data.SimpleType;
 import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.FieldType;
-import com.smartgwt.client.types.HashAlgorithm;
 import com.smartgwt.client.types.OperatorId;
 import com.smartgwt.client.types.SummaryFunctionType;
 import com.smartgwt.client.types.ValueEnum;
@@ -363,13 +362,13 @@ implements UIMasquerade<DataSourceField>, HasText
 		return field.getLength();
 	}
 
-	public void setMaxFileSize(Integer maxFileSize) {
-		field.setMaxFileSize(maxFileSize);
-	}
-
-	public Integer getMaxFileSize() {
-		return field.getMaxFileSize();
-	}
+//	public void setMaxFileSize(Integer maxFileSize) {
+//		field.setMaxFileSize(maxFileSize);
+//	}
+//
+//	public Integer getMaxFileSize() {
+//		return field.getMaxFileSize();
+//	}
 
 	public void setMultiple(Boolean multiple) {
 		field.setMultiple(multiple);
@@ -427,13 +426,13 @@ implements UIMasquerade<DataSourceField>, HasText
 		return field.getShowFileInline();
 	}
 
-	public void setStoreWithHash(HashAlgorithm storeWithHash) {
-		field.setStoreWithHash(storeWithHash);
-	}
-
-	public HashAlgorithm getStoreWithHash() {
-		return field.getStoreWithHash();
-	}
+//	public void setStoreWithHash(HashAlgorithm storeWithHash) {
+//		field.setStoreWithHash(storeWithHash);
+//	}
+//
+//	public HashAlgorithm getStoreWithHash() {
+//		return field.getStoreWithHash();
+//	}
 
 	public void setTitle(String title) {
 		field.setTitle(title);

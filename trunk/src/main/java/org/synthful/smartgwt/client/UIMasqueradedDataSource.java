@@ -386,14 +386,14 @@ implements UIMasquerade<D>, HasWidgets {
 		return datasource.getSendExtraFields();
 	}
 
-	public void setServerConstructor(String serverConstructor)
-			throws IllegalStateException {
-		datasource.setServerConstructor(serverConstructor);
-	}
-
-	public String getServerConstructor() {
-		return datasource.getServerConstructor();
-	}
+//	public void setServerConstructor(String serverConstructor)
+//			throws IllegalStateException {
+//		datasource.setServerConstructor(serverConstructor);
+//	}
+//
+//	public String getServerConstructor() {
+//		return datasource.getServerConstructor();
+//	}
 
 	public void setServiceNamespace(String serviceNamespace)
 			throws IllegalStateException {
