@@ -58,8 +58,6 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 public class UIHeaderItem  extends UIFormItem<HeaderItem> {
 
-	HeaderItem item;
-	
 	public void setJsObj(JavaScriptObject jsObj) {
 		item.setJsObj(jsObj);
 	}
