@@ -889,9 +889,6 @@ public class UIDateItem extends UIFormItem<DateItem> {
 		item.setDisplayField(displayField);
 	}
 
-	public void setDisplayFormat(DateDisplayFormat displayFormat) {
-		item.setDisplayFormat(displayFormat);
-	}
 
 	public void setEditorType(FormItem editorType) {
 		item.setEditorType(editorType);
