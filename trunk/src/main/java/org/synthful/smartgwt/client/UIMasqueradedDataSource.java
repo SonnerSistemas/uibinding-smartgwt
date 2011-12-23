@@ -240,9 +240,6 @@ implements UIMasquerade<D>, HasWidgets {
 		datasource.exportData();
 	}
 
-	public void exportData(Criteria criteria, DSRequest requestProperties) {
-		datasource.exportData(criteria, requestProperties);
-	}
 
 	public DataSourceField getFieldForDataPath(String dataPath) {
 		return datasource.getFieldForDataPath(dataPath);
@@ -283,10 +280,6 @@ implements UIMasquerade<D>, HasWidgets {
 
 	public String xmlSerialize(Map data, SerializationContext flags) {
 		return datasource.xmlSerialize(data, flags);
-	}
-
-	public void getFileURL(Record data) {
-		datasource.getFileURL(data);
 	}
 
 	public void setTypeOperators(FieldType fieldType, OperatorId[] operators) {
@@ -1001,6 +994,33 @@ implements UIMasquerade<D>, HasWidgets {
 
 	public void exportClientData(Object[] data, DSRequest requestProperties) {
 		datasource.exportClientData(data, requestProperties);
+	}
+	public void setDropUnknownCriteria(Boolean dropUnknownCriteria)
+			throws IllegalStateException {
+		datasource.setDropUnknownCriteria(dropUnknownCriteria);
+	}
+	public Boolean getDropUnknownCriteria() {
+		return datasource.getDropUnknownCriteria();
+	}
+	public int compareDates(Date date1, Date date2, String fieldName) {
+		return datasource.compareDates(date1, date2, fieldName);
+	}
+	public void exportData(Criteria criteria, DSRequest requestProperties,
+			DSCallback callback) {
+		datasource.exportData(criteria, requestProperties, callback);
+	}
+	public String getFileURL(Record data) {
+		return datasource.getFileURL(data);
+	}
+	public String getFileURL(Record data, String fieldName) {
+		return datasource.getFileURL(data, fieldName);
+	}
+	public String getFileURL(Record data, String fieldName,
+			DSRequest requestProperties) {
+		return datasource.getFileURL(data, fieldName, requestProperties);
+	}
+	public Criteria splitCriteria(Criteria criteria, String[] fields) {
+		return datasource.splitCriteria(criteria, fields);
 	}
 		
 

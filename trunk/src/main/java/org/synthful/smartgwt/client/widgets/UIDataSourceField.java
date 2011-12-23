@@ -15,11 +15,13 @@ import com.smartgwt.client.core.DataClass;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.DataSourceField;
 import com.smartgwt.client.data.FieldValueExtractor;
+import com.smartgwt.client.data.Record;
 import com.smartgwt.client.data.SimpleType;
 import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.FieldType;
 import com.smartgwt.client.types.OperatorId;
 import com.smartgwt.client.types.SummaryFunctionType;
+import com.smartgwt.client.types.TimeDisplayFormat;
 import com.smartgwt.client.types.ValueEnum;
 import com.smartgwt.client.widgets.BaseWidget;
 import com.smartgwt.client.widgets.form.fields.FormItem;
@@ -323,29 +325,6 @@ implements UIMasquerade<DataSourceField>, HasText
 		return field.getInapplicable();
 	}
 
-	public void setJavaClass(String javaClass) {
-		field.setJavaClass(javaClass);
-	}
-
-	public String getJavaClass() {
-		return field.getJavaClass();
-	}
-
-	public void setJavaCollectionClass(String javaCollectionClass) {
-		field.setJavaCollectionClass(javaCollectionClass);
-	}
-
-	public String getJavaCollectionClass() {
-		return field.getJavaCollectionClass();
-	}
-
-	public void setJavaKeyClass(String javaKeyClass) {
-		field.setJavaKeyClass(javaKeyClass);
-	}
-
-	public String getJavaKeyClass() {
-		return field.getJavaKeyClass();
-	}
 
 	public void setLength(Integer length) {
 		field.setLength(length);
@@ -545,6 +524,162 @@ implements UIMasquerade<DataSourceField>, HasText
 	@Override
 	public void setText(String title) {
 		field.setTitle(title);
+	}
+
+	public void setAttribute(String property, long value) {
+		field.setAttribute(property, value);
+	}
+
+	public Long getAttributeAsLong(String property) {
+		return field.getAttributeAsLong(property);
+	}
+
+	public double[] getAttributeAsDoubleArray(String property) {
+		return field.getAttributeAsDoubleArray(property);
+	}
+
+	public void setAttribute(String property, Integer[] value) {
+		field.setAttribute(property, value);
+	}
+
+	public void setAttribute(String property, double[] value) {
+		field.setAttribute(property, value);
+	}
+
+	public Record getAttributeAsRecord(String property) {
+		return field.getAttributeAsRecord(property);
+	}
+
+	public void setCanView(Boolean canView) {
+		field.setCanView(canView);
+	}
+
+	public Boolean getCanView() {
+		return field.getCanView();
+	}
+
+	public void setDateFormatter(DateDisplayFormat dateFormatter) {
+		field.setDateFormatter(dateFormatter);
+	}
+
+	public DateDisplayFormat getDateFormatter() {
+		return field.getDateFormatter();
+	}
+
+	public void setEscapeHTML(Boolean escapeHTML) {
+		field.setEscapeHTML(escapeHTML);
+	}
+
+	public Boolean getEscapeHTML() {
+		return field.getEscapeHTML();
+	}
+
+	public void setIncludeFrom(String includeFrom) {
+		field.setIncludeFrom(includeFrom);
+	}
+
+	public String getIncludeFrom() {
+		return field.getIncludeFrom();
+	}
+
+	public void setRootValue(Object rootValue) {
+		field.setRootValue(rootValue);
+	}
+
+	public Object getRootValue() {
+		return field.getRootValue();
+	}
+
+	public void setSummaryValueTitle(String summaryValueTitle) {
+		field.setSummaryValueTitle(summaryValueTitle);
+	}
+
+	public String getSummaryValueTitle() {
+		return field.getSummaryValueTitle();
+	}
+
+	public void setTimeFormatter(TimeDisplayFormat timeFormatter) {
+		field.setTimeFormatter(timeFormatter);
+	}
+
+	public TimeDisplayFormat getTimeFormatter() {
+		return field.getTimeFormatter();
+	}
+
+	public Validator[] getValidators() {
+		return field.getValidators();
+	}
+
+	public OperatorId[] getValidOperators() {
+		return field.getValidOperators();
+	}
+
+	public Map getValueMap() {
+		return field.getValueMap();
+	}
+
+	public void setReadOnlyEditorType(FormItem editorType) {
+		field.setReadOnlyEditorType(editorType);
+	}
+
+	public void setSummaryFunction(String summaryFunction) {
+		field.setSummaryFunction(summaryFunction);
+	}
+
+	public void setImageHeight(Integer imageHeight) {
+		field.setImageHeight(imageHeight);
+	}
+
+	public Integer getImageHeight() {
+		return field.getImageHeight();
+	}
+
+	public void setImageHeight(String imageHeight) {
+		field.setImageHeight(imageHeight);
+	}
+
+	public String getImageHeightAsString() {
+		return field.getImageHeightAsString();
+	}
+
+	public void setImageSize(Integer imageSize) {
+		field.setImageSize(imageSize);
+	}
+
+	public Integer getImageSize() {
+		return field.getImageSize();
+	}
+
+	public void setImageSize(String imageSize) {
+		field.setImageSize(imageSize);
+	}
+
+	public String getImageSizeAsString() {
+		return field.getImageSizeAsString();
+	}
+
+	public void setImageWidth(Integer imageWidth) {
+		field.setImageWidth(imageWidth);
+	}
+
+	public Integer getImageWidth() {
+		return field.getImageWidth();
+	}
+
+	public void setImageWidth(String imageWidth) {
+		field.setImageWidth(imageWidth);
+	}
+
+	public String getImageWidthAsString() {
+		return field.getImageWidthAsString();
+	}
+
+	public void setPrompt(String prompt) {
+		field.setPrompt(prompt);
+	}
+
+	public String getPrompt() {
+		return field.getPrompt();
 	}
 
 }
