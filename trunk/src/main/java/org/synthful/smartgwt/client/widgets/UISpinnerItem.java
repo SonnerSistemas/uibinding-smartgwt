@@ -22,6 +22,7 @@ import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.types.OperatorId;
 import com.smartgwt.client.types.TextMatchStyle;
+import com.smartgwt.client.types.TimeDisplayFormat;
 import com.smartgwt.client.types.TimeFormatter;
 import com.smartgwt.client.types.TitleOrientation;
 import com.smartgwt.client.types.ValueEnum;
@@ -951,11 +952,11 @@ public class UISpinnerItem extends UIFormItem<SpinnerItem> {
 		return item.getTextAlign();
 	}
 
-	public void setTimeFormatter(TimeFormatter timeFormatter) {
+	public void setTimeFormatter(TimeDisplayFormat timeFormatter) {
 		item.setTimeFormatter(timeFormatter);
 	}
 
-	public TimeFormatter getTimeFormatter() {
+	public TimeDisplayFormat getTimeFormatter() {
 		return item.getTimeFormatter();
 	}
 

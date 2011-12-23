@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.smartgwt.client.core.BaseClass;
 import com.smartgwt.client.core.DataClass;
 import com.smartgwt.client.core.Rectangle;
@@ -20,7 +20,7 @@ import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.types.OperatorId;
-import com.smartgwt.client.types.TimeFormatter;
+import com.smartgwt.client.types.TimeDisplayFormat;
 import com.smartgwt.client.types.TitleOrientation;
 import com.smartgwt.client.types.ValueEnum;
 import com.smartgwt.client.types.VerticalAlignment;
@@ -234,17 +234,11 @@ public class UIDateRangeItem extends UIFormItem<DateRangeItem> {
 		return item.getDataPath();
 	}
 
-	public DateDisplayFormat getDateDisplayFormat() {
-		return item.getDateDisplayFormat();
-	}
 
 	public DateDisplayFormat getDateFormatter() {
 		return item.getDateFormatter();
 	}
 
-	public String getDateInputFormat() {
-		return item.getDateInputFormat();
-	}
 
 	public String getDefaultIconSrc() {
 		return item.getDefaultIconSrc();
@@ -578,7 +572,7 @@ public class UIDateRangeItem extends UIFormItem<DateRangeItem> {
 		return item.getTextBoxStyle();
 	}
 
-	public TimeFormatter getTimeFormatter() {
+	public TimeDisplayFormat getTimeFormatter() {
 		return item.getTimeFormatter();
 	}
 
@@ -830,16 +824,8 @@ public class UIDateRangeItem extends UIFormItem<DateRangeItem> {
 		item.setDataPath(dataPath);
 	}
 
-	public void setDateDisplayFormat(DateDisplayFormat dateDisplayFormat) {
-		item.setDateDisplayFormat(dateDisplayFormat);
-	}
-
 	public void setDateFormatter(DateDisplayFormat dateFormatter) {
 		item.setDateFormatter(dateFormatter);
-	}
-
-	public void setDateInputFormat(String dateInputFormat) {
-		item.setDateInputFormat(dateInputFormat);
 	}
 
 	public void setDefaultIconSrc(String defaultIconSrc) {
@@ -1222,7 +1208,7 @@ public class UIDateRangeItem extends UIFormItem<DateRangeItem> {
 		item.setTextBoxStyle(textBoxStyle);
 	}
 
-	public void setTimeFormatter(TimeFormatter timeFormatter) {
+	public void setTimeFormatter(TimeDisplayFormat timeFormatter) {
 		item.setTimeFormatter(timeFormatter);
 	}
 

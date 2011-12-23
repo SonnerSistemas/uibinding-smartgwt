@@ -8,8 +8,8 @@ import org.synthful.smartgwt.client.UIMasquerade;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.core.BaseClass;
@@ -18,16 +18,20 @@ import com.smartgwt.client.core.Rectangle;
 import com.smartgwt.client.data.Criteria;
 import com.smartgwt.client.data.Criterion;
 import com.smartgwt.client.data.DataSource;
+import com.smartgwt.client.data.Record;
 import com.smartgwt.client.rpc.RPCRequest;
 import com.smartgwt.client.types.Alignment;
 import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.types.OperatorId;
+import com.smartgwt.client.types.TextMatchStyle;
+import com.smartgwt.client.types.TimeDisplayFormat;
 import com.smartgwt.client.types.TimeFormatter;
 import com.smartgwt.client.types.TitleOrientation;
 import com.smartgwt.client.types.ValueEnum;
 import com.smartgwt.client.types.VerticalAlignment;
 import com.smartgwt.client.widgets.BaseWidget;
+import com.smartgwt.client.widgets.Canvas;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.form.FormItemErrorFormatter;
 import com.smartgwt.client.widgets.form.FormItemHoverFormatter;
@@ -35,6 +39,7 @@ import com.smartgwt.client.widgets.form.FormItemIfFunction;
 import com.smartgwt.client.widgets.form.FormItemInputTransformer;
 import com.smartgwt.client.widgets.form.FormItemValueFormatter;
 import com.smartgwt.client.widgets.form.FormItemValueParser;
+import com.smartgwt.client.widgets.form.ValueIconMapper;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.FormItemIcon;
 import com.smartgwt.client.widgets.form.fields.events.BlurHandler;
@@ -43,12 +48,15 @@ import com.smartgwt.client.widgets.form.fields.events.ChangedHandler;
 import com.smartgwt.client.widgets.form.fields.events.ClickHandler;
 import com.smartgwt.client.widgets.form.fields.events.DoubleClickHandler;
 import com.smartgwt.client.widgets.form.fields.events.FocusHandler;
+import com.smartgwt.client.widgets.form.fields.events.FormItemInitHandler;
 import com.smartgwt.client.widgets.form.fields.events.IconClickHandler;
 import com.smartgwt.client.widgets.form.fields.events.IconKeyPressHandler;
 import com.smartgwt.client.widgets.form.fields.events.ItemHoverHandler;
 import com.smartgwt.client.widgets.form.fields.events.KeyDownHandler;
 import com.smartgwt.client.widgets.form.fields.events.KeyPressHandler;
 import com.smartgwt.client.widgets.form.fields.events.KeyUpHandler;
+import com.smartgwt.client.widgets.form.fields.events.TitleClickHandler;
+import com.smartgwt.client.widgets.form.fields.events.TitleDoubleClickHandler;
 import com.smartgwt.client.widgets.form.fields.events.TitleHoverHandler;
 import com.smartgwt.client.widgets.form.validator.Validator;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
@@ -578,7 +586,7 @@ abstract public class UIFormItem<F extends FormItem>
 		return item.getTextBoxStyle();
 	}
 
-	public TimeFormatter getTimeFormatter() {
+	public TimeDisplayFormat getTimeFormatter() {
 		return item.getTimeFormatter();
 	}
 
@@ -1186,7 +1194,7 @@ abstract public class UIFormItem<F extends FormItem>
 		item.setTextBoxStyle(textBoxStyle);
 	}
 
-	public void setTimeFormatter(TimeFormatter timeFormatter) {
+	public void setTimeFormatter(TimeDisplayFormat timeFormatter) {
 		item.setTimeFormatter(timeFormatter);
 	}
 
@@ -1338,6 +1346,187 @@ abstract public class UIFormItem<F extends FormItem>
 	@Override
 	public String getText() {
 		return item.getName();
+	}
+
+	public void setAttribute(String property, long value) {
+		item.setAttribute(property, value);
+	}
+
+	public Long getAttributeAsLong(String property) {
+		return item.getAttributeAsLong(property);
+	}
+
+	public double[] getAttributeAsDoubleArray(String property) {
+		return item.getAttributeAsDoubleArray(property);
+	}
+
+	public void setAttribute(String property, Integer[] value) {
+		item.setAttribute(property, value);
+	}
+
+	public void setAttribute(String property, double[] value) {
+		item.setAttribute(property, value);
+	}
+
+	public void setAllowExpressions(Boolean allowExpressions) {
+		item.setAllowExpressions(allowExpressions);
+	}
+
+	public Record getAttributeAsRecord(String property) {
+		return item.getAttributeAsRecord(property);
+	}
+
+	public Boolean getAllowExpressions() {
+		return item.getAllowExpressions();
+	}
+
+	public void setAlwaysFetchMissingValues(Boolean alwaysFetchMissingValues) {
+		item.setAlwaysFetchMissingValues(alwaysFetchMissingValues);
+	}
+
+	public Boolean getAlwaysFetchMissingValues() {
+		return item.getAlwaysFetchMissingValues();
+	}
+
+	public void setBrowserSpellCheck(Boolean browserSpellCheck) {
+		item.setBrowserSpellCheck(browserSpellCheck);
+	}
+
+	public Boolean getBrowserSpellCheck() {
+		return item.getBrowserSpellCheck();
+	}
+
+	public void setCanFocus(Boolean canFocus) {
+		item.setCanFocus(canFocus);
+	}
+
+	public Boolean getCanFocus() {
+		return item.getCanFocus();
+	}
+
+	public Canvas getContainerWidget() {
+		return item.getContainerWidget();
+	}
+
+	public void setImplicitSave(Boolean implicitSave) {
+		item.setImplicitSave(implicitSave);
+	}
+
+	public Boolean getImplicitSave() {
+		return item.getImplicitSave();
+	}
+
+	public void setImplicitSaveOnBlur(Boolean implicitSaveOnBlur) {
+		item.setImplicitSaveOnBlur(implicitSaveOnBlur);
+	}
+
+	public Boolean getImplicitSaveOnBlur() {
+		return item.getImplicitSaveOnBlur();
+	}
+
+	public void setInputFormat(String inputFormat) {
+		item.setInputFormat(inputFormat);
+	}
+
+	public String getInputFormat() {
+		return item.getInputFormat();
+	}
+
+	public void setTitleColSpan(int titleColSpan) {
+		item.setTitleColSpan(titleColSpan);
+	}
+
+	public int getTitleColSpan() {
+		return item.getTitleColSpan();
+	}
+
+	public void setValidOperators(OperatorId... validOperators) {
+		item.setValidOperators(validOperators);
+	}
+
+	public OperatorId[] getValidOperators() {
+		return item.getValidOperators();
+	}
+
+	public void setVisible(Boolean visible) {
+		item.setVisible(visible);
+	}
+
+	public Criterion getCriterion(TextMatchStyle textMatchStyle) {
+		return item.getCriterion(textMatchStyle);
+	}
+
+	public String getFullDataPath() {
+		return item.getFullDataPath();
+	}
+
+	public int getPageLeft() {
+		return item.getPageLeft();
+	}
+
+	public int getPageTop() {
+		return item.getPageTop();
+	}
+
+	public void invalidateDisplayValueCache() {
+		item.invalidateDisplayValueCache();
+	}
+
+	public Boolean shouldFetchMissingValue(Object newValue) {
+		return item.shouldFetchMissingValue(newValue);
+	}
+
+	public HandlerRegistration addTitleClickHandler(TitleClickHandler handler) {
+		return item.addTitleClickHandler(handler);
+	}
+
+	public HandlerRegistration addTitleDoubleClickHandler(
+			TitleDoubleClickHandler handler) {
+		return item.addTitleDoubleClickHandler(handler);
+	}
+
+	public void setInitHandler(FormItemInitHandler initHandler) {
+		item.setInitHandler(initHandler);
+	}
+
+	public void setProperty(String property, int value) {
+		item.setProperty(property, value);
+	}
+
+	public void setColSpan(int colSpan) {
+		item.setColSpan(colSpan);
+	}
+
+	public void setValue(Object value) {
+		item.setValue(value);
+	}
+
+	public Rectangle getPageRect() {
+		return item.getPageRect();
+	}
+
+	public Rectangle getRect() {
+		return item.getRect();
+	}
+
+	public JavaScriptObject getEditorTypeConfig() {
+		return item.getEditorTypeConfig();
+	}
+
+	public void showPicker() {
+		item.showPicker();
+	}
+
+	public void setValueIconMapper(ValueIconMapper valueIconMapper) {
+		item.setValueIconMapper(valueIconMapper);
+	}
+
+	public void setDisplayFormat(DateDisplayFormat displayFormat) {
+		item.setDisplayFormat(displayFormat);
+	}
+
+	public void setDisplayFormat(TimeFormatter displayFormat) {
+		item.setDisplayFormat(displayFormat);
 	}
 	
 }

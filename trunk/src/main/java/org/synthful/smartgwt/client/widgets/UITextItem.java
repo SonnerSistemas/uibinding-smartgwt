@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.smartgwt.client.core.BaseClass;
 import com.smartgwt.client.core.DataClass;
 import com.smartgwt.client.core.Rectangle;
@@ -20,7 +20,7 @@ import com.smartgwt.client.types.CharacterCasing;
 import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.types.OperatorId;
-import com.smartgwt.client.types.TimeFormatter;
+import com.smartgwt.client.types.TimeDisplayFormat;
 import com.smartgwt.client.types.TitleOrientation;
 import com.smartgwt.client.types.ValueEnum;
 import com.smartgwt.client.types.VerticalAlignment;
@@ -610,7 +610,7 @@ public class UITextItem extends UIFormItem<TextItem> {
 		return item.getTextBoxStyle();
 	}
 
-	public TimeFormatter getTimeFormatter() {
+	public TimeDisplayFormat getTimeFormatter() {
 		return item.getTimeFormatter();
 	}
 
@@ -1273,7 +1273,7 @@ public class UITextItem extends UIFormItem<TextItem> {
 		item.setTextBoxStyle(textBoxStyle);
 	}
 
-	public void setTimeFormatter(TimeFormatter timeFormatter) {
+	public void setTimeFormatter(TimeDisplayFormat timeFormatter) {
 		item.setTimeFormatter(timeFormatter);
 	}
 

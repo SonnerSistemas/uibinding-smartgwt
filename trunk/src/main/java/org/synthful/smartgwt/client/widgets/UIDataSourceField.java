@@ -274,13 +274,6 @@ implements UIMasquerade<DataSourceField>, HasText
 		return field.getDetail();
 	}
 
-	public void setDisplayFormat(DateDisplayFormat displayFormat) {
-		field.setDisplayFormat(displayFormat);
-	}
-
-	public DateDisplayFormat getDisplayFormat() {
-		return field.getDisplayFormat();
-	}
 
 	public void setExportTitle(String exportTitle) {
 		field.setExportTitle(exportTitle);

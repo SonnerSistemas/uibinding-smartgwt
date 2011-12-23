@@ -1,6 +1,7 @@
 package org.synthful.smartgwt.client.widgets;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +12,10 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.smartgwt.client.core.BaseClass;
 import com.smartgwt.client.core.DataClass;
 import com.smartgwt.client.data.Criteria;
 import com.smartgwt.client.data.DSCallback;
@@ -29,8 +32,11 @@ import com.smartgwt.client.types.CriteriaPolicy;
 import com.smartgwt.client.types.DSDataFormat;
 import com.smartgwt.client.types.DSProtocol;
 import com.smartgwt.client.types.EnumTranslateStrategy;
+import com.smartgwt.client.types.FieldType;
+import com.smartgwt.client.types.OperatorId;
 import com.smartgwt.client.types.RPCTransport;
 import com.smartgwt.client.types.TextMatchStyle;
+import com.smartgwt.client.types.ValueEnum;
 
 public class UIDataSource
 extends Widget
@@ -188,9 +194,6 @@ implements UIMasquerade<DataSource>, HasWidgets {
 		return datasource.getCacheAllData();
 	}
 
-	public void setCacheData(Record[] cacheData) throws IllegalStateException {
-		datasource.setCacheData(cacheData);
-	}
 
 	public Record[] getCacheData() {
 		return datasource.getCacheData();
@@ -561,10 +564,6 @@ implements UIMasquerade<DataSource>, HasWidgets {
 		datasource.updateCaches(dsResponse, dsRequest);
 	}
 
-	public void validateData() {
-		datasource.validateData();
-	}
-
 	public void setDataProtocol(DSProtocol dataProtocol)
 			throws IllegalStateException {
 		datasource.setDataProtocol(dataProtocol);
@@ -639,14 +638,6 @@ implements UIMasquerade<DataSource>, HasWidgets {
 		datasource.setXmlNamespaces(xmlNamespaces);
 	}
 
-	public void fetchData() {
-		datasource.fetchData();
-	}
-
-	public void fetchData(Criteria criteria) {
-		datasource.fetchData(criteria);
-	}
-
 	public void fetchData(Criteria criteria, DSCallback callback) {
 		datasource.fetchData(criteria, callback);
 	}
@@ -656,9 +647,6 @@ implements UIMasquerade<DataSource>, HasWidgets {
 		datasource.fetchData(criteria, callback, requestProperties);
 	}
 
-	public void filterData(Criteria criteria) {
-		datasource.filterData(criteria);
-	}
 
 	public void filterData(Criteria criteria, DSCallback callback) {
 		datasource.filterData(criteria, callback);
@@ -752,6 +740,268 @@ implements UIMasquerade<DataSource>, HasWidgets {
 
 	public void exportClientData(Object[] data, DSRequest requestProperties) {
 		datasource.exportClientData(data, requestProperties);
+	}
+
+	public String getID() {
+		return datasource.getID();
+	}
+
+	public String getAttribute(String attribute) {
+		return datasource.getAttribute(attribute);
+	}
+
+	public String getAttributeAsString(String property) {
+		return datasource.getAttributeAsString(property);
+	}
+
+	public Date getAttributeAsDate(String property) {
+		return datasource.getAttributeAsDate(property);
+	}
+
+	public Integer getAttributeAsInt(String property) {
+		return datasource.getAttributeAsInt(property);
+	}
+
+	public Double getAttributeAsDouble(String property) {
+		return datasource.getAttributeAsDouble(property);
+	}
+
+	public Element getAttributeAsElement(String property) {
+		return datasource.getAttributeAsElement(property);
+	}
+
+	public JavaScriptObject getAttributeAsJavaScriptObject(String property) {
+		return datasource.getAttributeAsJavaScriptObject(property);
+	}
+
+	public Float getAttributeAsFloat(String property) {
+		return datasource.getAttributeAsFloat(property);
+	}
+
+	public Boolean getAttributeAsBoolean(String property) {
+		return datasource.getAttributeAsBoolean(property);
+	}
+
+	public Map getAttributeAsMap(String property) {
+		return datasource.getAttributeAsMap(property);
+	}
+
+	public void setAttribute(String attribute, String value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, Boolean value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, Map value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, int[] value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, BaseClass[] value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, DataClass[] value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setCacheData(Record... cacheData) {
+		datasource.setCacheData(cacheData);
+	}
+
+	public void setAttribute(String attribute, double value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, int value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, Date value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, ValueEnum[] value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, DataClass value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, JavaScriptObject value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, String[] value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setAttribute(String attribute, Element value,
+			boolean allowPostCreate) {
+		datasource.setAttribute(attribute, value, allowPostCreate);
+	}
+
+	public void setDataField(String dataField) throws IllegalStateException {
+		datasource.setDataField(dataField);
+	}
+
+	public String getDataField() {
+		return datasource.getDataField();
+	}
+
+	public void setDescriptionField(String descriptionField)
+			throws IllegalStateException {
+		datasource.setDescriptionField(descriptionField);
+	}
+
+	public String getDescriptionField() {
+		return datasource.getDescriptionField();
+	}
+
+	public void setGlobalNamespaces(Map globalNamespaces) {
+		datasource.setGlobalNamespaces(globalNamespaces);
+	}
+
+	public Map getGlobalNamespaces() {
+		return datasource.getGlobalNamespaces();
+	}
+
+	public void setInfoField(String infoField) throws IllegalStateException {
+		datasource.setInfoField(infoField);
+	}
+
+	public String getInfoField() {
+		return datasource.getInfoField();
+	}
+
+	public void setInheritsFrom(String inheritsFrom)
+			throws IllegalStateException {
+		datasource.setInheritsFrom(inheritsFrom);
+	}
+
+	public String getInheritsFrom() {
+		return datasource.getInheritsFrom();
+	}
+
+	public OperationBinding[] getOperationBindings() {
+		return datasource.getOperationBindings();
+	}
+
+	public DSRequest getRequestProperties() {
+		return datasource.getRequestProperties();
+	}
+
+	public void setResultSetClass(String resultSetClass)
+			throws IllegalStateException {
+		datasource.setResultSetClass(resultSetClass);
+	}
+
+	public String getResultSetClass() {
+		return datasource.getResultSetClass();
+	}
+
+	public void setUseOfflineStorage(Boolean useOfflineStorage) {
+		datasource.setUseOfflineStorage(useOfflineStorage);
+	}
+
+	public Boolean getUseOfflineStorage() {
+		return datasource.getUseOfflineStorage();
+	}
+
+	public void setWillHandleAdvancedCriteria(Boolean willHandleAdvancedCriteria) {
+		datasource.setWillHandleAdvancedCriteria(willHandleAdvancedCriteria);
+	}
+
+	public Boolean getWillHandleAdvancedCriteria() {
+		return datasource.getWillHandleAdvancedCriteria();
+	}
+
+	public void exportData() {
+		datasource.exportData();
+	}
+
+	public void exportData(Criteria criteria, DSRequest requestProperties) {
+		datasource.exportData(criteria, requestProperties);
+	}
+
+	public DataSourceField getFieldForDataPath(String dataPath) {
+		return datasource.getFieldForDataPath(dataPath);
+	}
+
+	public Boolean supportsAdvancedCriteria() {
+		return datasource.supportsAdvancedCriteria();
+	}
+
+	public void validateData(Record values) {
+		datasource.validateData(values);
+	}
+
+	public void validateData(Record values, DSCallback callback,
+			DSRequest requestProperties) {
+		datasource.validateData(values, callback, requestProperties);
+	}
+
+	public void setID(String id) {
+		datasource.setID(id);
+	}
+
+	public Record[] copyRecords(Record[] records) {
+		return datasource.copyRecords(records);
+	}
+
+	public Record copyRecord(Record record) {
+		return datasource.copyRecord(record);
+	}
+
+	public String xmlSerialize(Record data, SerializationContext flags) {
+		return datasource.xmlSerialize(data, flags);
+	}
+
+	public String xmlSerialize(Record[] data, SerializationContext flags) {
+		return datasource.xmlSerialize(data, flags);
+	}
+
+	public String xmlSerialize(Map data, SerializationContext flags) {
+		return datasource.xmlSerialize(data, flags);
+	}
+
+	public void getFileURL(Record data) {
+		datasource.getFileURL(data);
+	}
+
+	public void setTypeOperators(FieldType fieldType, OperatorId[] operators) {
+		datasource.setTypeOperators(fieldType, operators);
+	}
+
+	public OperatorId[] getTypeOperators(FieldType fieldType) {
+		return datasource.getTypeOperators(fieldType);
+	}
+
+	public OperatorId[] getFieldOperators(String fieldName) {
+		return datasource.getFieldOperators(fieldName);
+	}
+
+	public OperatorId[] getFieldOperators(DataSourceField field) {
+		return datasource.getFieldOperators(field);
 	}
 		
 

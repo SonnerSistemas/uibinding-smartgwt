@@ -481,10 +481,6 @@ public class UIListGridField extends Widget implements UIMasquerade<ListGridFiel
 		return field.getSortDirection();
 	}
 
-	public SummaryFunctionType getSummaryFunction() {
-		return field.getSummaryFunction();
-	}
-
 	public String getSummaryTitle() {
 		return field.getSummaryTitle();
 	}
