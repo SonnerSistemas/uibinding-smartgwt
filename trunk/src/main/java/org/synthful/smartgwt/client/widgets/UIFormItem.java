@@ -26,6 +26,7 @@ import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.types.OperatorId;
 import com.smartgwt.client.types.TextMatchStyle;
 import com.smartgwt.client.types.TimeDisplayFormat;
+import com.smartgwt.client.types.TimeFormatter;
 import com.smartgwt.client.types.TitleOrientation;
 import com.smartgwt.client.types.ValueEnum;
 import com.smartgwt.client.types.VerticalAlignment;
@@ -65,6 +66,30 @@ abstract public class UIFormItem<F extends FormItem>
 
 	protected F item;
 	
+	public void setCanEdit(Boolean canEdit) {
+		item.setCanEdit(canEdit);
+	}
+
+	public Boolean getCanEdit() {
+		return item.getCanEdit();
+	}
+
+	public void setVAlign(VerticalAlignment vAlign) {
+		item.setVAlign(vAlign);
+	}
+
+	public VerticalAlignment getVAlign() {
+		return item.getVAlign();
+	}
+
+	public boolean isVisible() {
+		return item.isVisible();
+	}
+
+	public void setDisplayFormat(TimeFormatter displayFormat) {
+		item.setDisplayFormat(displayFormat);
+	}
+
 	public F getFormItem() {
 		return this.item;
 	}
