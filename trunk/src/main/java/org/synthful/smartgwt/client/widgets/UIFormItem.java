@@ -26,7 +26,6 @@ import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.types.OperatorId;
 import com.smartgwt.client.types.TextMatchStyle;
 import com.smartgwt.client.types.TimeDisplayFormat;
-import com.smartgwt.client.types.TimeFormatter;
 import com.smartgwt.client.types.TitleOrientation;
 import com.smartgwt.client.types.ValueEnum;
 import com.smartgwt.client.types.VerticalAlignment;
@@ -84,10 +83,6 @@ abstract public class UIFormItem<F extends FormItem>
 
 	public boolean isVisible() {
 		return item.isVisible();
-	}
-
-	public void setDisplayFormat(TimeFormatter displayFormat) {
-		item.setDisplayFormat(displayFormat);
 	}
 
 	public F getFormItem() {
