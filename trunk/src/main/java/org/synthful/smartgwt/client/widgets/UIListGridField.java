@@ -7,8 +7,8 @@ import org.synthful.smartgwt.client.UIMasquerade;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.core.BaseClass;
@@ -16,7 +16,9 @@ import com.smartgwt.client.core.DataClass;
 import com.smartgwt.client.data.Criteria;
 import com.smartgwt.client.data.DSRequest;
 import com.smartgwt.client.data.DataSource;
+import com.smartgwt.client.data.Record;
 import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.types.AutoFitWidthApproach;
 import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.EnterKeyEditAction;
 import com.smartgwt.client.types.EscapeKeyEditAction;
@@ -26,12 +28,15 @@ import com.smartgwt.client.types.RecordSummaryFunctionType;
 import com.smartgwt.client.types.SortDirection;
 import com.smartgwt.client.types.SummaryFunctionType;
 import com.smartgwt.client.types.TextMatchStyle;
+import com.smartgwt.client.types.TimeDisplayFormat;
 import com.smartgwt.client.types.ValueEnum;
 import com.smartgwt.client.widgets.BaseWidget;
 import com.smartgwt.client.widgets.Button;
 import com.smartgwt.client.widgets.form.fields.FormItem;
 import com.smartgwt.client.widgets.form.fields.FormItemIcon;
 import com.smartgwt.client.widgets.form.validator.Validator;
+import com.smartgwt.client.widgets.grid.CellEditValueFormatter;
+import com.smartgwt.client.widgets.grid.CellEditValueParser;
 import com.smartgwt.client.widgets.grid.CellFormatter;
 import com.smartgwt.client.widgets.grid.EditorValueMapFunction;
 import com.smartgwt.client.widgets.grid.GroupTitleRenderer;
@@ -1156,5 +1161,158 @@ public class UIListGridField extends Widget implements UIMasquerade<ListGridFiel
 	@Override
 	public void setText(String title) {
 		field.setTitle(title);
+	}
+
+	public void setAttribute(String property, long value) {
+		field.setAttribute(property, value);
+	}
+
+	public Long getAttributeAsLong(String property) {
+		return field.getAttributeAsLong(property);
+	}
+
+	public double[] getAttributeAsDoubleArray(String property) {
+		return field.getAttributeAsDoubleArray(property);
+	}
+
+	public void setAttribute(String property, Integer[] value) {
+		field.setAttribute(property, value);
+	}
+
+	public void setAttribute(String property, double[] value) {
+		field.setAttribute(property, value);
+	}
+
+	public void setAutoFitWidth(Boolean autoFitWidth) {
+		field.setAutoFitWidth(autoFitWidth);
+	}
+
+	public Boolean getAutoFitWidth() {
+		return field.getAutoFitWidth();
+	}
+
+	public void setAutoFitWidthApproach(
+			AutoFitWidthApproach autoFitWidthApproach) {
+		field.setAutoFitWidthApproach(autoFitWidthApproach);
+	}
+
+	public AutoFitWidthApproach getAutoFitWidthApproach() {
+		return field.getAutoFitWidthApproach();
+	}
+
+	public Record getAttributeAsRecord(String property) {
+		return field.getAttributeAsRecord(property);
+	}
+
+	public void setCanHilite(Boolean canHilite) {
+		field.setCanHilite(canHilite);
+	}
+
+	public Boolean getCanHilite() {
+		return field.getCanHilite();
+	}
+
+	public void setDataPath(String dataPath) {
+		field.setDataPath(dataPath);
+	}
+
+	public String getDataPath() {
+		return field.getDataPath();
+	}
+
+	public void setEscapeHTML(Boolean escapeHTML) {
+		field.setEscapeHTML(escapeHTML);
+	}
+
+	public Boolean getEscapeHTML() {
+		return field.getEscapeHTML();
+	}
+
+	public void setExportRawValues(Boolean exportRawValues) {
+		field.setExportRawValues(exportRawValues);
+	}
+
+	public Boolean getExportRawValues() {
+		return field.getExportRawValues();
+	}
+
+	public void setLinkTextProperty(String linkTextProperty) {
+		field.setLinkTextProperty(linkTextProperty);
+	}
+
+	public String getLinkTextProperty() {
+		return field.getLinkTextProperty();
+	}
+
+	public void setLinkURLPrefix(String linkURLPrefix) {
+		field.setLinkURLPrefix(linkURLPrefix);
+	}
+
+	public String getLinkURLPrefix() {
+		return field.getLinkURLPrefix();
+	}
+
+	public void setLinkURLSuffix(String linkURLSuffix) {
+		field.setLinkURLSuffix(linkURLSuffix);
+	}
+
+	public String getLinkURLSuffix() {
+		return field.getLinkURLSuffix();
+	}
+
+	public void setSortByDisplayField(Boolean sortByDisplayField) {
+		field.setSortByDisplayField(sortByDisplayField);
+	}
+
+	public Boolean getSortByDisplayField() {
+		return field.getSortByDisplayField();
+	}
+
+	public void setSummaryValueTitle(String summaryValueTitle) {
+		field.setSummaryValueTitle(summaryValueTitle);
+	}
+
+	public String getSummaryValueTitle() {
+		return field.getSummaryValueTitle();
+	}
+
+	public void setTimeFormatter(TimeDisplayFormat timeFormatter) {
+		field.setTimeFormatter(timeFormatter);
+	}
+
+	public TimeDisplayFormat getTimeFormatter() {
+		return field.getTimeFormatter();
+	}
+
+	public void setEditValueFormatter(CellEditValueFormatter formatter) {
+		field.setEditValueFormatter(formatter);
+	}
+
+	public void setEditValueParser(CellEditValueParser parser) {
+		field.setEditValueParser(parser);
+	}
+
+	public void setAlign(Alignment align) {
+		field.setAlign(align);
+	}
+
+	public void setFilterEditorProperties(FormItem filterEditorProperties) {
+		field.setFilterEditorProperties(filterEditorProperties);
+	}
+
+	public void setSummaryFunction(String summaryFunction) {
+		field.setSummaryFunction(summaryFunction);
+	}
+
+	public void setSummaryFunction(SummaryFunction summaryFunction) {
+		field.setSummaryFunction(summaryFunction);
+	}
+
+	public void addSummaryFunction(SummaryFunction summaryFunction) {
+		field.addSummaryFunction(summaryFunction);
+	}
+
+	public void addSummaryFunction(SummaryFunctionType summaryFunction) {
+		field.addSummaryFunction(summaryFunction);
 	}
 }

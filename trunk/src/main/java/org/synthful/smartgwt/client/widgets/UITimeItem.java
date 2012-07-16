@@ -190,6 +190,7 @@ public class UITimeItem extends UIFormItem<TimeItem>{
 		return item.getAttributeAsJavaScriptObject(attribute);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public Map getAttributeAsMap(String property) {
 		return item.getAttributeAsMap(property);
 	}
@@ -801,8 +802,9 @@ public class UITimeItem extends UIFormItem<TimeItem>{
 	public void setAttribute(String attribute, JavaScriptObject value) {
 		item.setAttribute(attribute, value);
 	}
-
-	public void setAttribute(String attribute, Map value) {
+	
+	@SuppressWarnings("rawtypes")
+	public void setAttribute(String attribute,  Map value) {
 		item.setAttribute(attribute, value);
 	}
 
