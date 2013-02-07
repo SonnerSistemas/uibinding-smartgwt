@@ -24,6 +24,10 @@ import com.smartgwt.client.widgets.tab.TabSet;
 
 public class UITab extends Widget implements HasWidgets, UIMasquerade<Tab> {
 	final protected Tab tab;
+	public Tab getTab() {
+		return tab;
+	}
+
 	private Canvas canvas;
 
 	public UITab() {
