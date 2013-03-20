@@ -228,13 +228,13 @@ implements UIMasquerade<D>, HasWidgets {
 		return datasource.getUseOfflineStorage();
 	}
 
-	public void setWillHandleAdvancedCriteria(Boolean willHandleAdvancedCriteria) {
-		datasource.setWillHandleAdvancedCriteria(willHandleAdvancedCriteria);
-	}
-
-	public Boolean getWillHandleAdvancedCriteria() {
-		return datasource.getWillHandleAdvancedCriteria();
-	}
+//	public void setWillHandleAdvancedCriteria(Boolean willHandleAdvancedCriteria) {
+//		datasource.setWillHandleAdvancedCriteria(willHandleAdvancedCriteria);
+//	}
+//
+//	public Boolean getWillHandleAdvancedCriteria() {
+//		return datasource.getWillHandleAdvancedCriteria();
+//	}
 
 	public void exportData() {
 		datasource.exportData();
@@ -345,6 +345,7 @@ implements UIMasquerade<D>, HasWidgets {
 		datasource.setScClassName(scClassName);
 	}
 
+	@Override
 	public int hashCode() {
 		return datasource.hashCode();
 	}
@@ -361,6 +362,7 @@ implements UIMasquerade<D>, HasWidgets {
 		datasource.destroy();
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		return datasource.equals(obj);
 	}
@@ -395,6 +397,7 @@ implements UIMasquerade<D>, HasWidgets {
 		return datasource.getAutoConvertRelativeDates();
 	}
 
+	@Override
 	public String toString() {
 		return datasource.toString();
 	}
@@ -433,10 +436,12 @@ implements UIMasquerade<D>, HasWidgets {
 		datasource.setProperty(property, value);
 	}
 
+	@Override
 	public void fireEvent(GwtEvent<?> event) {
 		datasource.fireEvent(event);
 	}
 
+	@Override
 	public int getHandlerCount(Type<?> type) {
 		return datasource.getHandlerCount(type);
 	}
@@ -694,10 +699,12 @@ implements UIMasquerade<D>, HasWidgets {
 		return datasource.getTagName();
 	}
 
+	@Override
 	public void setTitle(String title) {
 		datasource.setTitle(title);
 	}
 
+	@Override
 	public String getTitle() {
 		return datasource.getTitle();
 	}
@@ -871,9 +878,9 @@ implements UIMasquerade<D>, HasWidgets {
 		return datasource.getDisplayValue(fieldName, value);
 	}
 
-	public void setTestData(DataClass[] testData) {
-		datasource.setTestData(testData);
-	}
+//	public void setTestData(DataClass[] testData) {
+//		datasource.setTestData(testData);
+//	}
 
 	public DataClass[] getTestData() {
 		return datasource.getTestData();

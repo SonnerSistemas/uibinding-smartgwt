@@ -84,6 +84,7 @@ implements UIMasquerade<DataSourceField>, HasText
 		return field.getAttributeAsBoolean(property);
 	}
 
+	@Override
 	public int hashCode() {
 		return field.hashCode();
 	}
@@ -156,6 +157,7 @@ implements UIMasquerade<DataSourceField>, HasText
 		field.setAttribute(property, value);
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		return field.equals(obj);
 	}
@@ -224,6 +226,7 @@ implements UIMasquerade<DataSourceField>, HasText
 		return field.getAttributes();
 	}
 
+	@Override
 	public void fireEvent(GwtEvent<?> event) {
 		field.fireEvent(event);
 	}
@@ -232,6 +235,7 @@ implements UIMasquerade<DataSourceField>, HasText
 		return field.getCanSave();
 	}
 
+	@Override
 	public int getHandlerCount(Type<?> type) {
 		return field.getHandlerCount(type);
 	}
@@ -260,6 +264,7 @@ implements UIMasquerade<DataSourceField>, HasText
 		field.setChildTagName(childTagName);
 	}
 
+	@Override
 	public String toString() {
 		return field.toString();
 	}
@@ -406,10 +411,12 @@ implements UIMasquerade<DataSourceField>, HasText
 //		return field.getStoreWithHash();
 //	}
 
+	@Override
 	public void setTitle(String title) {
 		field.setTitle(title);
 	}
 
+	@Override
 	public String getTitle() {
 		return field.getTitle();
 	}
@@ -574,13 +581,13 @@ implements UIMasquerade<DataSourceField>, HasText
 		return field.getEscapeHTML();
 	}
 
-	public void setIncludeFrom(String includeFrom) {
-		field.setIncludeFrom(includeFrom);
-	}
-
-	public String getIncludeFrom() {
-		return field.getIncludeFrom();
-	}
+//	public void setIncludeFrom(String includeFrom) {
+//		field.setIncludeFrom(includeFrom);
+//	}
+//
+//	public String getIncludeFrom() {
+//		return field.getIncludeFrom();
+//	}
 
 	public void setRootValue(Object rootValue) {
 		field.setRootValue(rootValue);
