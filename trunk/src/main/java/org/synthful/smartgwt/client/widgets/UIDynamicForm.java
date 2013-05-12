@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.synthful.smartgwt.client.HasUICanvasAlign;
+import org.synthful.smartgwt.client.UIFormAware;
 import org.synthful.smartgwt.client.util.StringTokenizer;
 
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -52,6 +53,9 @@ implements HasWidgets, HasUICanvasAlign {
 		}
 		else if (widget instanceof UIDataSource){
 			setDataSource(((UIDataSource)widget).getSmartObject());
+		}
+		if(widget instanceof UIFormAware){
+			((UIFormAware)widget).setDynamicForm(this);
 		}
 	}
 
