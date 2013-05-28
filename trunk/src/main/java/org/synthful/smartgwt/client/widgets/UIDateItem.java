@@ -5,9 +5,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.i18n.client.TimeZone;
+import com.google.gwt.i18n.client.TimeZoneInfo;
+import com.google.gwt.i18n.client.constants.TimeZoneConstants;
 import com.smartgwt.client.core.BaseClass;
 import com.smartgwt.client.core.DataClass;
 import com.smartgwt.client.core.Rectangle;
@@ -53,10 +57,13 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 public class UIDateItem extends UIFormItem<DateItem> {
 
+	private TimeZoneConstants timeZoneConstants = GWT.create(TimeZoneConstants.class);
+	private TimeZone timeZone = TimeZone.createTimeZone(TimeZoneInfo.buildTimeZoneData(timeZoneConstants.americaSaoPaulo()));
+	
 	public UIDateItem() {
 		item = new DateItem();
 	}
-
+	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return item.addBlurHandler(handler);
 	}
@@ -1331,7 +1338,12 @@ public class UIDateItem extends UIFormItem<DateItem> {
 	}
 
 	public void setValue(Date value) {
-		item.setValue(value);
+		if(value!= null && timeZone.isDaylightTime(value)){
+			value.setTime(value.getTime()+(60*60000));
+			item.setValue(value);
+		} else {
+			item.setValue(value);
+		}
 	}
 
 	public void setValue(double value) {

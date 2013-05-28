@@ -1,12 +1,18 @@
 package org.synthful.smartgwt.client.widgets;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.i18n.client.TimeZone;
+import com.google.gwt.i18n.client.TimeZoneInfo;
+import com.google.gwt.i18n.client.constants.TimeZoneConstants;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.data.DataSource;
+import com.smartgwt.client.data.Record;
 import com.smartgwt.client.data.RecordList;
 import com.smartgwt.client.types.ListGridEditEvent;
 import com.smartgwt.client.widgets.grid.ListGrid;
@@ -14,9 +20,13 @@ import com.smartgwt.client.widgets.grid.ListGridField;
 
 public class UIListGrid extends ListGrid implements HasWidgets {
 
+	private TimeZoneConstants timeZoneConstants = GWT.create(TimeZoneConstants.class);
+	private TimeZone timeZone = TimeZone.createTimeZone(TimeZoneInfo.buildTimeZoneData(timeZoneConstants.americaSaoPaulo()));
+	
 	public UIListGrid() {
 		super();
 	}
+	
 
 	@Override
 	public void add(Widget widget) {
@@ -104,6 +114,25 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 				super.setEditEvent(editEvent);
 			}
 		}
+	}
+	
+	@Override
+	public void addData(Record record) {
+		for (String iterable_element : record.getAttributes()) {
+			Date obj = null;
+			try {
+				obj = record.getAttributeAsDate(iterable_element);
+				if(obj != null){
+					if(obj!= null && timeZone.isDaylightTime((Date)obj)){
+						((Date)obj).setHours(((Date)obj).getHours()+1);
+						record.setAttribute(iterable_element,obj);
+					}
+				}
+			} catch (Exception e) {
+				continue;
+			}
+		}
+		super.addData(record);
 	}
 
 }
