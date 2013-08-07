@@ -20,21 +20,9 @@ public class UIToolStrip
 			 addButton((ToolStripButton) w);
 	    else if (w instanceof UIToolStripMenuButton)
 			 addMenuButton((UIToolStripMenuButton) w);
-	    //else if (w instanceof UIFormItem)
-		//	 addFormItem(w);
 	    else if (w instanceof Canvas)
 			 addMember((Canvas)w);
 
-
-/*
-			 addFill();
-			 
-			 addResizer();
-
-			 addSeparator();
-
-			 addSpacer(int space);
-*/
 	}
 
 	@Override
