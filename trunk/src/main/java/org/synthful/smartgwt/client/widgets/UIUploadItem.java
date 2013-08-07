@@ -2,6 +2,7 @@ package org.synthful.smartgwt.client.widgets;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -57,8 +58,18 @@ public class UIUploadItem extends UIFormItem<UploadItem>{
 		item = new UploadItem();
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public String getFileName() {
-		String value = (String) getValue();
+		Object oValue = null;
+		if(getValue() instanceof List) {
+			oValue = ((List)getValue()).get(0);
+		} 
+		
+		String value = null;
+		if(oValue instanceof String) {
+			value = (String) oValue;	
+		}
+		
 		if(value != null && !"".equals(value.trim())) {
 			String fileName = value;
 			try {
