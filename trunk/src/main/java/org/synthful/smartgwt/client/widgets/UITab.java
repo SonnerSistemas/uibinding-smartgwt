@@ -24,6 +24,9 @@ import com.smartgwt.client.widgets.tab.TabSet;
 
 public class UITab extends Widget implements HasWidgets, UIMasquerade<Tab> {
 	final protected Tab tab;
+	
+	private Integer position;
+	
 	public Tab getTab() {
 		return tab;
 	}
@@ -348,6 +351,17 @@ public class UITab extends Widget implements HasWidgets, UIMasquerade<Tab> {
 
 	public String toString() {
 		return tab.toString();
+	}
+
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		if(position < 0) {
+			throw new RuntimeException("position its not >= 0");
+		}
+		this.position = position;
 	}
 
 }
