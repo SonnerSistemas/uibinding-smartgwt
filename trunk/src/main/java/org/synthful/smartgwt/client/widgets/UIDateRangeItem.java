@@ -21,6 +21,8 @@ import com.smartgwt.client.types.DateDisplayFormat;
 import com.smartgwt.client.types.FormErrorOrientation;
 import com.smartgwt.client.types.OperatorId;
 import com.smartgwt.client.types.TimeDisplayFormat;
+import com.smartgwt.client.types.TimeFormatter;
+import com.smartgwt.client.types.TimeUnit;
 import com.smartgwt.client.types.TitleOrientation;
 import com.smartgwt.client.types.ValueEnum;
 import com.smartgwt.client.types.VerticalAlignment;
@@ -184,6 +186,14 @@ public class UIDateRangeItem extends UIFormItem<DateRangeItem> {
 
 	public JavaScriptObject getAttributeAsJavaScriptObject(String attribute) {
 		return item.getAttributeAsJavaScriptObject(attribute);
+	}
+	
+	public void setInnerTitleOrientation(TitleOrientation innerTitleOrientation){
+		item.setInnerTitleOrientation(innerTitleOrientation);
+	}
+
+	public TitleOrientation getInnerTitleOrientation( ){
+		return item.getInnerTitleOrientation();
 	}
 
 	public Map getAttributeAsMap(String property) {
@@ -1363,4 +1373,37 @@ public class UIDateRangeItem extends UIFormItem<DateRangeItem> {
 	public Boolean validate() {
 		return item.validate();
 	}
+
+	public void setInputFormat(String inputFormat) {
+		item.setInputFormat(inputFormat);
+	}
+
+	public String getInputFormat() {
+		return item.getInputFormat();
+	}
+
+	public void setToDate(String toDate) {
+		item.setToDate(toDate);
+	}
+
+	public void setEditCriteriaInInnerForm(Boolean editCriteriaInInnerForm) {
+		item.setEditCriteriaInInnerForm(editCriteriaInInnerForm);
+	}
+
+	public void setToDate(TimeUnit toDate) {
+		item.setToDate(toDate);
+	}
+
+	public void setSaveOnEnter(Boolean saveOnEnter) {
+		item.setSaveOnEnter(saveOnEnter);
+	}
+
+	public void setTitleColSpan(int titleColSpan) {
+		item.setTitleColSpan(titleColSpan);
+	}
+
+	public void setDisplayFormat(DateDisplayFormat displayFormat) {
+		item.setDisplayFormat(displayFormat);
+	}
+
 }
