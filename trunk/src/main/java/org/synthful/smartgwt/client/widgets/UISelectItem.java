@@ -637,6 +637,10 @@ public class UISelectItem extends UIFormItem<SelectItemEnhanced>{
 	public ListGridRecord getSelectedRecord() {
 		return item.getSelectedRecord();
 	}
+	
+	public ListGridRecord[] getSelectedRecords() {
+		return item.getSelectedRecords();
+	}
 
 	public Boolean getSelectOnFocus() {
 		return item.getSelectOnFocus();
