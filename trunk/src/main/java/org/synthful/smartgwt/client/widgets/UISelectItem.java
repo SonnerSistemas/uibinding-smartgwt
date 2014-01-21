@@ -92,6 +92,10 @@ public class UISelectItem extends UIFormItem<SelectItemEnhanced>{
 		return item.getSelectedObject();
 	}
 	
+	public void removeSelectedObjects(){
+		item.removeSelectedObjects();
+	}
+
 	public boolean setSelectedObject(Object objSelected) {
 		return item.setSelectedObject(objSelected);
 	}

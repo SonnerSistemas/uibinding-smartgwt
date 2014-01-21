@@ -51,21 +51,65 @@ public class SelectItemEnhanced extends SelectItem{
 	
 	public Object getSelectedObject() {
 		Object objSelected = null;
-		String idString = (String) getValue();
-		if(idString != null && !"".equals(idString)) {
-			try {
-				int id = Integer.parseInt(idString);
-//				if (valuesList!=null){
-					objSelected = valuesList.get(id);
-//				} else {
-//					objSelected = null;
-//				}
-			} catch (NumberFormatException e) {
+		Object values = getValue();
+		if(values instanceof List){
+			List retorno = new ArrayList();
+//			List<String> vals = 
+			for(String idString:((List<String>)values)){
+				if(idString != null && !"".equals(idString)) {
+					try {
+						int id = Integer.parseInt(idString);
+						objSelected = valuesList.get(id);
+						retorno.add(objSelected);
+					} catch (NumberFormatException e) {
+					}
+				}
 			}
+		return retorno;
+		}else{
+			String idString = (String) getValue();
+			if(idString != null && !"".equals(idString)) {
+				try {
+					int id = Integer.parseInt(idString);
+					objSelected = valuesList.get(id);
+				} catch (NumberFormatException e) {
+				}
+			}
+			return objSelected;
 		}
-		return objSelected;
 	}
 	
+	public void removeSelectedObjects() {
+		Object objSelected = null;
+		Object values = getValue();
+		if(values instanceof List){
+//			List<String> vals = 
+			for(String idString:((List<String>)values)){
+				if(idString != null && !"".equals(idString)) {
+					try {
+						int id = Integer.parseInt(idString);
+						if(!valuesList.isEmpty()){
+							objSelected = valuesList.remove(id);
+						}
+					} catch (NumberFormatException e) {
+					}
+				}
+			}
+		}else{
+			String idString = (String) getValue();
+			if(idString != null && !"".equals(idString)) {
+				try {
+					int id = Integer.parseInt(idString);
+					if(!valuesList.isEmpty()){
+						objSelected = valuesList.remove(id);
+					}
+				} catch (NumberFormatException e) {
+				}
+			}
+		}
+		setValues(valuesList);
+	}
+
 	public boolean setSelectedObject(Object objSelected) {
 		if(objSelected == null) {
 			clearValue();
