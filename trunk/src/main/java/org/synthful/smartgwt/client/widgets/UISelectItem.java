@@ -100,6 +100,11 @@ public class UISelectItem extends UIFormItem<SelectItemEnhanced>{
 		return item.setSelectedObject(objSelected);
 	}
 	
+
+	public boolean setSelectedObject(Object objSelected,boolean force) {
+		return item.setSelectedObject(objSelected,force);
+	}
+	
 	public Object getObjectValue(int index) {
 		return item.getObjectValue(index);
 	}

@@ -124,10 +124,24 @@ public class SelectItemEnhanced extends SelectItem{
 				}
 			}
 		}
-		
 		return false;
 	}
-	
+
+	public boolean setSelectedObject(Object objSelected,boolean force) {
+		if(!force || objSelected==null){
+			return setSelectedObject(objSelected);
+		}
+
+		for(Object obj: this.valuesList) {
+			if(obj.equals(objSelected)){
+				return setSelectedObject(objSelected);
+			}
+		}
+		this.valuesList.add(objSelected);
+		setValues(this.valuesList);
+		return setSelectedObject(objSelected);
+	}
+
 	public Object getObjectValue(int index) {
 		if (index > -1 && index < valuesList.size()) {
 			return this.valuesList.get(index);
