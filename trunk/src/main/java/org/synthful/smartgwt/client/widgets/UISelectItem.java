@@ -193,6 +193,14 @@ public class UISelectItem extends UIFormItem<SelectItemEnhanced>{
 	public void clearValue() {
 		item.clearValue();
 	}
+	
+	public boolean isMarkIfUnique() {
+		return item.isMarkIfUnique();
+	}
+
+	public void setMarkIfUnique(boolean markIfUnique) {
+		item.setMarkIfUnique(markIfUnique);
+	}
 
 	public void defaultDynamicValue() {
 		item.defaultDynamicValue();

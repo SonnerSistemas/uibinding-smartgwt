@@ -12,6 +12,8 @@ public class SelectItemEnhanced extends SelectItem{
 	@SuppressWarnings("unchecked")
 	private List valuesList;
 	
+	private boolean markIfUnique=false;
+	
 	@SuppressWarnings("unchecked")
 	public void setValues(Enum... emuns) {
 		setValues((Object[])emuns);
@@ -47,6 +49,9 @@ public class SelectItemEnhanced extends SelectItem{
 			}
 		}
 		setValueMap(innerValues);
+		if(values.size()==1 && ( markIfUnique || getAllowEmptyValue()==null || !getAllowEmptyValue() )){
+			setSelectedIndex(0);
+		}
 	}
 	
 	public Object getSelectedObject() {
@@ -151,7 +156,7 @@ public class SelectItemEnhanced extends SelectItem{
 	}
 	
 	public void setSelectedIndex(int index) {
-		if(index == 0 && getAllowEmptyValue()) {
+		if(index == 0 && getAllowEmptyValue()!=null && getAllowEmptyValue()) {
 			clearValue();
 		}else {
 			if(index > -1 && index < valuesList.size()) {
@@ -192,5 +197,13 @@ public class SelectItemEnhanced extends SelectItem{
 	
 	public List getValuesList(){
 		return valuesList;
+	}
+
+	public boolean isMarkIfUnique() {
+		return markIfUnique;
+	}
+
+	public void setMarkIfUnique(boolean markIfUnique) {
+		this.markIfUnique = markIfUnique;
 	}
 }
