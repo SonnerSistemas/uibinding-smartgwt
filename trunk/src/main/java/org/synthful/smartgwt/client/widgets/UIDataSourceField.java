@@ -248,10 +248,6 @@ implements UIMasquerade<DataSourceField>, HasText
 		field.setCanSortClientOnly(canSortClientOnly);
 	}
 
-	public Boolean getCanSortClientOnly() {
-		return field.getCanSortClientOnly();
-	}
-
 	public void setChildrenProperty(Boolean childrenProperty) {
 		field.setChildrenProperty(childrenProperty);
 	}
@@ -276,11 +272,6 @@ implements UIMasquerade<DataSourceField>, HasText
 	public void setDetail(Boolean detail) {
 		field.setDetail(detail);
 	}
-
-	public Boolean getDetail() {
-		return field.getDetail();
-	}
-
 
 	public void setExportTitle(String exportTitle) {
 		field.setExportTitle(exportTitle);
@@ -308,18 +299,6 @@ implements UIMasquerade<DataSourceField>, HasText
 
 	public void setHidden(Boolean hidden) {
 		field.setHidden(hidden);
-	}
-
-	public Boolean getHidden() {
-		return field.getHidden();
-	}
-
-	public void setIgnore(Boolean ignore) {
-		field.setIgnore(ignore);
-	}
-
-	public Boolean getIgnore() {
-		return field.getIgnore();
 	}
 
 	public void setInapplicable(Boolean inapplicable) {
@@ -365,10 +344,6 @@ implements UIMasquerade<DataSourceField>, HasText
 
 	public void setPrimaryKey(Boolean primaryKey) {
 		field.setPrimaryKey(primaryKey);
-	}
-
-	public Boolean getPrimaryKey() {
-		return field.getPrimaryKey();
 	}
 
 	public void setPropertiesOnly(Boolean propertiesOnly) {
@@ -687,6 +662,174 @@ implements UIMasquerade<DataSourceField>, HasText
 
 	public String getPrompt() {
 		return field.getPrompt();
+	}
+
+	public final void setJavaScriptObject(JavaScriptObject jsObj) {
+		field.setJavaScriptObject(jsObj);
+	}
+
+	public void setCanSortClientOnly(boolean canSortClientOnly) {
+		field.setCanSortClientOnly(canSortClientOnly);
+	}
+
+	public boolean getCanSortClientOnly() {
+		return field.getCanSortClientOnly();
+	}
+
+	public void setAttributeAsJavaObject(String property, Object value) {
+		field.setAttributeAsJavaObject(property, value);
+	}
+
+	public void setDecimalPad(Integer decimalPad) {
+		field.setDecimalPad(decimalPad);
+	}
+
+	public Integer getDecimalPad() {
+		return field.getDecimalPad();
+	}
+
+	public void setDecimalPrecision(Integer decimalPrecision) {
+		field.setDecimalPrecision(decimalPrecision);
+	}
+
+	public Integer getDecimalPrecision() {
+		return field.getDecimalPrecision();
+	}
+
+	public void setDetail(boolean detail) {
+		field.setDetail(detail);
+	}
+
+	public boolean getDetail() {
+		return field.getDetail();
+	}
+
+	public void setDisplayField(String displayField) {
+		field.setDisplayField(displayField);
+	}
+
+	public String getDisplayField() {
+		return field.getDisplayField();
+	}
+
+	public void setEmptyDisplayValue(String emptyDisplayValue) {
+		field.setEmptyDisplayValue(emptyDisplayValue);
+	}
+
+	public String getEmptyDisplayValue() {
+		return field.getEmptyDisplayValue();
+	}
+
+	public void setExportFormat(String exportFormat) {
+		field.setExportFormat(exportFormat);
+	}
+
+	public String getExportFormat() {
+		return field.getExportFormat();
+	}
+
+	public void setFormat(String format) {
+		field.setFormat(format);
+	}
+
+	public String getFormat() {
+		return field.getFormat();
+	}
+
+	public void setHidden(boolean hidden) {
+		field.setHidden(hidden);
+	}
+
+	public boolean getHidden() {
+		return field.getHidden();
+	}
+
+	public void setIgnoreTextMatchStyle(Boolean ignoreTextMatchStyle) {
+		field.setIgnoreTextMatchStyle(ignoreTextMatchStyle);
+	}
+
+	public Boolean getIgnoreTextMatchStyle() {
+		return field.getIgnoreTextMatchStyle();
+	}
+
+	public void setLenientXPath(Boolean lenientXPath) {
+		field.setLenientXPath(lenientXPath);
+	}
+
+	public Boolean getLenientXPath() {
+		return field.getLenientXPath();
+	}
+
+	public void setMultipleValueSeparator(String multipleValueSeparator) {
+		field.setMultipleValueSeparator(multipleValueSeparator);
+	}
+
+	public String getMultipleValueSeparator() {
+		return field.getMultipleValueSeparator();
+	}
+
+	public void setNillable(Boolean nillable) {
+		field.setNillable(nillable);
+	}
+
+	public Boolean getNillable() {
+		return field.getNillable();
+	}
+
+	public void setPrecision(Integer precision) {
+		field.setPrecision(precision);
+	}
+
+	public Integer getPrecision() {
+		return field.getPrecision();
+	}
+
+	public void setPrimaryKey(boolean primaryKey) {
+		field.setPrimaryKey(primaryKey);
+	}
+
+	public boolean getPrimaryKey() {
+		return field.getPrimaryKey();
+	}
+
+	public void setUploadFieldName(String uploadFieldName) {
+		field.setUploadFieldName(uploadFieldName);
+	}
+
+	public String getUploadFieldName() {
+		return field.getUploadFieldName();
+	}
+
+	public void exportForceText() {
+		field.exportForceText();
+	}
+
+	public void setEditorProperties(FormItem editorProperties) {
+		field.setEditorProperties(editorProperties);
+	}
+
+	public void setEditorType(String editorType) {
+		field.setEditorType(editorType);
+	}
+
+	public void setEditorType(Class<? extends FormItem> editorType) {
+		field.setEditorType(editorType);
+	}
+
+	public void setReadOnlyEditorProperties(FormItem editorProperties) {
+		field.setReadOnlyEditorProperties(editorProperties);
+	}
+
+	public void setReadOnlyEditorType(String editorType) {
+		field.setReadOnlyEditorType(editorType);
+	}
+
+	public void setReadOnlyEditorType(Class<? extends FormItem> editorType) {
+		field.setReadOnlyEditorType(editorType);
+	}
+
+	public SimpleType getTypeAsSimpleType() {
+		return field.getTypeAsSimpleType();
 	}
 
 }

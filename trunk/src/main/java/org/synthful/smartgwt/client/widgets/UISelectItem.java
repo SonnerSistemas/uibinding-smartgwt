@@ -1157,7 +1157,7 @@ public class UISelectItem extends UIFormItem<SelectItemEnhanced>{
 	}
 
 	public void setFields(FormItemIcon pickerIconProperties) {
-		item.setFields(pickerIconProperties);
+		item.setIcons(pickerIconProperties);
 	}
 
 	public void setFilterLocally(Boolean filterLocally) {

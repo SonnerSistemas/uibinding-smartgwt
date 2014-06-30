@@ -4,7 +4,7 @@
 	<groupId>org.synthful</groupId>
 	<artifactId>uibinding-smartgwt</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.10</version>
+	<version>1.0.11-SMARTGWT-4.1p</version>
 	<name>uibinding-smartgwt</name>
 	<description>This project adapts Smart GWT visual classes to enable them to be used as UiBinder nodes</description>
 
@@ -14,11 +14,16 @@
 			<name>Smart Client Repository</name>
 			<url>http://www.smartclient.com/maven2</url>
 		</repository> 
+		<repository>
+			<id>sonner-sistemas</id>
+			<name>Sonner Sistemas Repository</name>
+			<url>http://maven.sonner.com.br/~maven2</url>
+		</repository> 
 	</repositories> 
 
 	<properties>
-		<gwtVersion>2.5.0</gwtVersion>
-		<smartGwtVersion>3.1</smartGwtVersion>
+		<gwtVersion>2.6.1</gwtVersion>
+		<smartGwtVersion>4.1p</smartGwtVersion>
 	</properties>
 
 	<dependencies>
