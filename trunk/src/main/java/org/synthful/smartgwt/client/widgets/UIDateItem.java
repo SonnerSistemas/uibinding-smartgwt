@@ -1338,7 +1338,7 @@ public class UIDateItem extends UIFormItem<DateItem> {
 	}
 
 	public void setValue(Date value) {
-		if(value!= null && timeZone.isDaylightTime(value))
+		if(value!= null && value.getHours() == 0 && timeZone.isDaylightTime(value))
 			value.setTime(value.getTime()+(60*60000));
 		item.setValue(value);
 	}
