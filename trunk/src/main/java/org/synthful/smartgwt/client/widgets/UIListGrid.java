@@ -127,9 +127,17 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 			try {
 				obj = record.getAttributeAsDate(iterable_element);
 				Date date = (Date)obj;
-				if(date != null && date.getHours() == 0 && timeZone.isDaylightTime(date)){
-					date.setTime(date.getTime()+(60*60000));
-					record.setAttribute(iterable_element,date);
+				if (date != null) {
+					int hours = -1;
+					try {
+						hours = date.getHours();
+					} catch (Exception ex) {
+						//Date object does not contain time information
+					}
+					if(hours == 0 && timeZone.isDaylightTime(date)){
+						date.setTime(date.getTime()+(60*60000));
+						record.setAttribute(iterable_element,date);
+					}
 				}
 			} catch (Exception e) {
 				continue;
