@@ -61,6 +61,8 @@ public class UIDateItem extends UIFormItem<DateItem> {
 	private TimeZoneConstants timeZoneConstants = GWT.create(TimeZoneConstants.class);
 	private TimeZone timeZone = TimeZone.createTimeZone(TimeZoneInfo.buildTimeZoneData(timeZoneConstants.americaSaoPaulo()));
 	
+	private DateTimeFormat hourFormatter = DateTimeFormat.getFormat("HH");
+	
 	public UIDateItem() {
 		item = new DateItem();
 	}
@@ -1340,15 +1342,8 @@ public class UIDateItem extends UIFormItem<DateItem> {
 
 	public void setValue(Date value) {
 		if (value != null) {
-			value = new Date(value.getTime());
-			int hours = 0;
-			
-			try {
-				hours = value.getHours();
-			} catch (Exception ex) {
-				//Date object does not contain time information
-			}
-			if(hours == 0 && timeZone.isDaylightTime(value))
+			String hours = hourFormatter.format(value);
+			if("00".equals(hours) && timeZone.isDaylightTime(value))
 				value.setTime(value.getTime()+(60*60000));
 		}
 		item.setValue(value);

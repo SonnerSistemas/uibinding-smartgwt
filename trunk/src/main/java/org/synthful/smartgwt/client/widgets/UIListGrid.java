@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.TimeZone;
 import com.google.gwt.i18n.client.TimeZoneInfo;
 import com.google.gwt.i18n.client.constants.TimeZoneConstants;
@@ -22,6 +23,8 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 
 	private TimeZoneConstants timeZoneConstants = GWT.create(TimeZoneConstants.class);
 	private TimeZone timeZone = TimeZone.createTimeZone(TimeZoneInfo.buildTimeZoneData(timeZoneConstants.americaSaoPaulo()));
+	
+	private DateTimeFormat hourFormatter = DateTimeFormat.getFormat("HH");
 	
 	public UIListGrid() {
 		super();
@@ -128,14 +131,8 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 				obj = record.getAttributeAsDate(iterable_element);
 				Date date = (Date)obj;
 				if (date != null) {
-					date = new Date(date.getTime());
-					int hours = 0;
-					try {
-						hours = date.getHours();
-					} catch (Exception ex) {
-						//Date object does not contain time information
-					}
-					if(hours == 0 && timeZone.isDaylightTime(date)){
+					String hours = hourFormatter.format(date);
+					if("00".equals(hours) && timeZone.isDaylightTime(date)) {
 						date.setTime(date.getTime()+(60*60000));
 						record.setAttribute(iterable_element,date);
 					}
