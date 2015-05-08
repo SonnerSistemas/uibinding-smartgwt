@@ -129,7 +129,7 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 				Date date = (Date)obj;
 				if (date != null) {
 					date = new Date(date.getTime());
-					int hours = -1;
+					int hours = 0;
 					try {
 						hours = date.getHours();
 					} catch (Exception ex) {

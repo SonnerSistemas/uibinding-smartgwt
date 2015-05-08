@@ -1341,7 +1341,7 @@ public class UIDateItem extends UIFormItem<DateItem> {
 	public void setValue(Date value) {
 		if (value != null) {
 			value = new Date(value.getTime());
-			int hours = -1;
+			int hours = 0;
 			
 			try {
 				hours = value.getHours();
