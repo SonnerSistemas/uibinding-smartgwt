@@ -26,6 +26,8 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 	private TimeZone timeZone = TimeZone.createTimeZone(TimeZoneInfo.buildTimeZoneData(timeZoneConstants.americaSaoPaulo()));
 	
 	private DateTimeFormat hourFormatter = DateTimeFormat.getFormat("HH");
+	private DateTimeFormat dateFormatter = DateTimeFormat.getFormat("ddMMyyyy");
+	private DateTimeFormat dateTimeParser = DateTimeFormat.getFormat("ddMMyyyyHHmm");
 	
 	public UIListGrid() {
 		super();
@@ -141,10 +143,10 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 								record.setAttribute(iterable_element,date);
 							}
 						} else {
-							if(timeZone.isDaylightTime(date)) {
-								date.setTime(date.getTime()+(60*60000));
-								record.setAttribute(iterable_element,date);
-							}
+							String formattedDate = dateFormatter.format(date);
+							date = dateTimeParser.parse(formattedDate + "1200");
+							
+							record.setAttribute(iterable_element,date);
 						}
 					}
 				}
