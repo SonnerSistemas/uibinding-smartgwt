@@ -9,7 +9,6 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.TimeZone;
 import com.google.gwt.i18n.client.TimeZoneInfo;
 import com.google.gwt.i18n.client.constants.TimeZoneConstants;
@@ -60,8 +59,6 @@ public class UIDateItem extends UIFormItem<DateItem> {
 
 	private TimeZoneConstants timeZoneConstants = GWT.create(TimeZoneConstants.class);
 	private TimeZone timeZone = TimeZone.createTimeZone(TimeZoneInfo.buildTimeZoneData(timeZoneConstants.americaSaoPaulo()));
-	
-	private DateTimeFormat hourFormatter = DateTimeFormat.getFormat("HH");
 	
 	public UIDateItem() {
 		item = new DateItem();
@@ -1341,10 +1338,8 @@ public class UIDateItem extends UIFormItem<DateItem> {
 	}
 
 	public void setValue(Date value) {
-		if (value != null) {
-			String hours = hourFormatter.format(value);
-			if("00".equals(hours) && timeZone.isDaylightTime(value))
-				value.setTime(value.getTime()+(60*60000));
+		if (value != null && timeZone.isDaylightTime(value)) {
+			value.setTime(value.getTime()+(60*60000));
 		}
 		item.setValue(value);
 	}

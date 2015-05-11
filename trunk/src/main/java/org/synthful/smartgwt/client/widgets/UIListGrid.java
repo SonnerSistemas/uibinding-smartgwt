@@ -16,6 +16,7 @@ import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.data.Record;
 import com.smartgwt.client.data.RecordList;
 import com.smartgwt.client.types.ListGridEditEvent;
+import com.smartgwt.client.types.ListGridFieldType;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 
@@ -131,10 +132,20 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 				obj = record.getAttributeAsDate(iterable_element);
 				Date date = (Date)obj;
 				if (date != null) {
-					String hours = hourFormatter.format(date);
-					if("00".equals(hours) && timeZone.isDaylightTime(date)) {
-						date.setTime(date.getTime()+(60*60000));
-						record.setAttribute(iterable_element,date);
+					ListGridField field = getField(iterable_element);
+					if (field != null) {
+						if (ListGridFieldType.DATETIME.equals(field.getType())) {
+							String hours = hourFormatter.format(date);
+							if("00".equals(hours) && timeZone.isDaylightTime(date)) {
+								date.setTime(date.getTime()+(60*60000));
+								record.setAttribute(iterable_element,date);
+							}
+						} else {
+							if(timeZone.isDaylightTime(date)) {
+								date.setTime(date.getTime()+(60*60000));
+								record.setAttribute(iterable_element,date);
+							}
+						}
 					}
 				}
 			} catch (Exception e) {
