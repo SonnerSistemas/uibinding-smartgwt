@@ -1335,8 +1335,10 @@ public class UIDateItem extends UIFormItem<DateItem> {
 	}
 
 	public void setValue(Date value) {
-		String formattedDate = dateFormatter.format(value);
-		value = dateTimeParser.parse(formattedDate + "1200");
+		if (value != null) {
+			String formattedDate = dateFormatter.format(value);
+			value = dateTimeParser.parse(formattedDate + "1200");
+		}
 		item.setValue(value);
 	}
 
