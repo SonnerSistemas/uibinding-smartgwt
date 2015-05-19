@@ -63,6 +63,7 @@ import com.smartgwt.client.widgets.form.fields.events.FormItemInitHandler;
 import com.smartgwt.client.widgets.form.fields.events.IconClickHandler;
 import com.smartgwt.client.widgets.form.fields.events.IconKeyPressHandler;
 import com.smartgwt.client.widgets.form.fields.events.ItemHoverHandler;
+import com.smartgwt.client.widgets.form.fields.events.KeyDownEvent;
 import com.smartgwt.client.widgets.form.fields.events.KeyDownHandler;
 import com.smartgwt.client.widgets.form.fields.events.KeyPressHandler;
 import com.smartgwt.client.widgets.form.fields.events.KeyUpHandler;
@@ -82,6 +83,16 @@ public class UIDateTimeItem extends UIFormItem<DateTimeItem> {
 	
 	public UIDateTimeItem() {
 		item = new DateTimeItem();
+		item.addKeyDownHandler(new KeyDownHandler() {
+
+			@Override
+			public void onKeyDown(KeyDownEvent event) {
+				if (event.getKeyName().equalsIgnoreCase("Enter")) {
+					item.setValue(item.getTextField().getValue());
+				}
+
+			}
+		});
 	}
 	
 	public void setJsObj(JavaScriptObject jsObj) {

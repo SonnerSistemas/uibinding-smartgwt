@@ -5,10 +5,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.i18n.client.TimeZone;
+import com.google.gwt.i18n.client.TimeZoneInfo;
+import com.google.gwt.i18n.client.constants.TimeZoneConstants;
 import com.smartgwt.client.core.BaseClass;
 import com.smartgwt.client.core.DataClass;
 import com.smartgwt.client.core.Rectangle;
@@ -45,6 +49,7 @@ import com.smartgwt.client.widgets.form.fields.events.FocusHandler;
 import com.smartgwt.client.widgets.form.fields.events.IconClickHandler;
 import com.smartgwt.client.widgets.form.fields.events.IconKeyPressHandler;
 import com.smartgwt.client.widgets.form.fields.events.ItemHoverHandler;
+import com.smartgwt.client.widgets.form.fields.events.KeyDownEvent;
 import com.smartgwt.client.widgets.form.fields.events.KeyDownHandler;
 import com.smartgwt.client.widgets.form.fields.events.KeyPressHandler;
 import com.smartgwt.client.widgets.form.fields.events.KeyUpHandler;
@@ -54,11 +59,21 @@ import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 public class UIDateItem extends UIFormItem<DateItem> {
 
-	private DateTimeFormat dateFormatter = DateTimeFormat.getFormat("ddMMyyyy");
-	private DateTimeFormat dateTimeParser = DateTimeFormat.getFormat("ddMMyyyyHHmm");
+	private TimeZoneConstants timeZoneConstants = GWT.create(TimeZoneConstants.class);
+	private TimeZone timeZone = TimeZone.createTimeZone(TimeZoneInfo.buildTimeZoneData(timeZoneConstants.americaSaoPaulo()));
 	
 	public UIDateItem() {
 		item = new DateItem();
+		item.addKeyDownHandler(new KeyDownHandler() {
+
+			@Override
+			public void onKeyDown(KeyDownEvent event) {
+				if (event.getKeyName().equalsIgnoreCase("Enter")) {
+					item.setValue(item.getTextField().getValue());
+				}
+
+			}
+		});
 	}
 	
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
@@ -1335,9 +1350,8 @@ public class UIDateItem extends UIFormItem<DateItem> {
 	}
 
 	public void setValue(Date value) {
-		if (value != null) {
-			String formattedDate = dateFormatter.format(value);
-			value = dateTimeParser.parse(formattedDate + "1200");
+		if (value != null && timeZone.isDaylightTime(value)) {
+			value.setTime(value.getTime()+(60*60000));
 		}
 		item.setValue(value);
 	}
