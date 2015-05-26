@@ -1,33 +1,18 @@
 package org.synthful.smartgwt.client.widgets;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.i18n.client.TimeZone;
-import com.google.gwt.i18n.client.TimeZoneInfo;
-import com.google.gwt.i18n.client.constants.TimeZoneConstants;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.data.DataSource;
-import com.smartgwt.client.data.Record;
 import com.smartgwt.client.data.RecordList;
 import com.smartgwt.client.types.ListGridEditEvent;
-import com.smartgwt.client.types.ListGridFieldType;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 
 public class UIListGrid extends ListGrid implements HasWidgets {
-
-	private TimeZoneConstants timeZoneConstants = GWT.create(TimeZoneConstants.class);
-	private TimeZone timeZone = TimeZone.createTimeZone(TimeZoneInfo.buildTimeZoneData(timeZoneConstants.americaSaoPaulo()));
-	
-	private DateTimeFormat hourFormatter = DateTimeFormat.getFormat("HH");
-	private DateTimeFormat dateFormatter = DateTimeFormat.getFormat("ddMMyyyy");
-	private DateTimeFormat dateTimeParser = DateTimeFormat.getFormat("ddMMyyyyHHmm");
 	
 	public UIListGrid() {
 		super();
@@ -124,37 +109,6 @@ public class UIListGrid extends ListGrid implements HasWidgets {
 				super.setEditEvent(editEvent);
 			}
 		}
-	}
-	
-	@Override
-	public void addData(Record record) {
-		for (String iterable_element : record.getAttributes()) {
-			Date obj = null;
-			try {
-				obj = record.getAttributeAsDate(iterable_element);
-				Date date = (Date)obj;
-				if (date != null) {
-					ListGridField field = getField(iterable_element);
-					if (field != null) {
-						if (ListGridFieldType.DATETIME.equals(field.getType())) {
-							String hours = hourFormatter.format(date);
-							if("00".equals(hours) && timeZone.isDaylightTime(date)) {
-								date.setTime(date.getTime()+(60*60000));
-								record.setAttribute(iterable_element,date);
-							}
-						} else {
-							if(timeZone.isDaylightTime(date)) {
-								date.setTime(date.getTime()+(60*60000));
-								record.setAttribute(iterable_element,date);
-							}
-						}
-					}
-				}
-			} catch (Exception e) {
-				continue;
-			}
-		}
-		super.addData(record);
 	}
 
 }
