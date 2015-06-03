@@ -8,6 +8,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat;
 import com.smartgwt.client.core.BaseClass;
 import com.smartgwt.client.core.DataClass;
 import com.smartgwt.client.core.Rectangle;
@@ -69,6 +71,8 @@ import com.smartgwt.client.widgets.form.validator.Validator;
 import com.smartgwt.client.widgets.grid.ListGridRecord;
 
 public class UIDateTimeItem extends UIFormItem<DateTimeItem> {
+	
+	private DateTimeFormat dateFormatter = null;
 	
 	public UIDateTimeItem() {
 		item = new DateTimeItem();
@@ -595,8 +599,34 @@ public class UIDateTimeItem extends UIFormItem<DateTimeItem> {
 		return item.getOptionFilterContext();
 	}
 
+	@SuppressWarnings("deprecation")
 	public Object getValue() {
-		return item.getValue();
+		Object value = item.getValue();
+		if (value instanceof Date) {
+			return value;
+		} else if (value instanceof String) {
+			String strDate = (String)value;
+			int idxSeparator = strDate.indexOf(' ');
+			if (idxSeparator > 0) {
+				strDate = strDate.substring(0, idxSeparator);
+			}
+			strDate += " 000000";
+			if (dateFormatter != null) {
+				try {
+					return dateFormatter.parse(strDate);
+				} catch (Exception ex) {
+					return null;
+				}
+			} else {
+				try {
+					return Date.parse(strDate);
+				} catch (Exception ex) {
+					return null;
+				}
+			}
+		}
+		
+		return null;
 	}
 
 	public int hashCode() {
@@ -669,6 +699,7 @@ public class UIDateTimeItem extends UIFormItem<DateTimeItem> {
 
 	public void setDisplayFormat(DateDisplayFormat displayFormat) {
 		item.setDisplayFormat(displayFormat);
+		dateFormatter = getFormatter(displayFormat);
 	}
 
 	public void setCenturyThreshold(int centuryThreshold) {
@@ -1817,4 +1848,30 @@ public class UIDateTimeItem extends UIFormItem<DateTimeItem> {
 		return item.toString();
 	}
 
+	private DateTimeFormat getFormatter(DateDisplayFormat format) {
+		switch (format) {
+		case TODATESTAMP:
+			return DateTimeFormat.getFormat("yyyyMMdd HHmmss");
+		case TOEUROPEANSHORTDATE:
+			return DateTimeFormat.getFormat("dd/MM/yyyy HHmmss");
+		case TOEUROPEANSHORTDATETIME:
+			return DateTimeFormat.getFormat("dd/MM/yyyy HHmmss");
+		case TOJAPANSHORTDATE:
+			return DateTimeFormat.getFormat("yyyy/MM/dd HHmmss");
+		case TOJAPANSHORTDATETIME:
+			return DateTimeFormat.getFormat("yyyy/MM/dd HHmmss");
+		case TOLOCALESTRING:
+			return DateTimeFormat.getFormat(PredefinedFormat.DATE_FULL);
+		case TOSERIALIZEABLEDATE:
+			return null;
+		case TOSTRING:
+			return null;
+		case TOUSSHORTDATE:
+			return DateTimeFormat.getFormat("MM/dd/yyyy HHmmss");
+		case TOUSSHORTDATETIME:
+			return DateTimeFormat.getFormat("MM/dd/yyyy HHmmss");
+		default:
+			return null;
+		}
+	}
 }
