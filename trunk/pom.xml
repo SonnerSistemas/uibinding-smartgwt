@@ -4,7 +4,7 @@
 	<groupId>org.synthful</groupId>
 	<artifactId>uibinding-smartgwt</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.22-SMARTGWT-4.1p</version>
+	<version>1.0.23-SMARTGWT-4.1p</version>
 	<name>uibinding-smartgwt</name>
 	<description>This project adapts Smart GWT visual classes to enable them to be used as UiBinder nodes</description>
 
