@@ -615,12 +615,14 @@ public class UIDateTimeItem extends UIFormItem<DateTimeItem> {
 				try {
 					return dateFormatter.parse(strDate);
 				} catch (Exception ex) {
+					setValue((Date)null);
 					return null;
 				}
 			} else {
 				try {
 					return Date.parse(strDate);
 				} catch (Exception ex) {
+					setValue((Date)null);
 					return null;
 				}
 			}

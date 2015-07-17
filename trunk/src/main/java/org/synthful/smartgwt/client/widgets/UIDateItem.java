@@ -661,7 +661,12 @@ public class UIDateItem extends UIFormItem<DateItem> {
 	}
 
 	public Object getValue() {
-		return item.getValue();
+		Object value = item.getValue();
+		if (value != null && value instanceof String) {
+			setValue((Date)null);
+			return null;
+		}
+		return value;
 	}
 
 	public String getValueField() {
